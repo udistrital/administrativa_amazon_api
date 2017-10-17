@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
+	"strconv"
 	"strings"
 	"time"
 
@@ -11,22 +12,20 @@ import (
 )
 
 type ContratoGeneral struct {
-	Id                           int                 `orm:"column(numero_contrato);pk"`
-	Vigencia                     int                 `orm:"column(vigencia)"`
+	Id                           string              `orm:"column(numero_contrato);pk"`
+	VigenciaContrato             int                 `orm:"column(vigencia)"`
 	ObjetoContrato               string              `orm:"column(objeto_contrato);null"`
 	PlazoEjecucion               int                 `orm:"column(plazo_ejecucion)"`
 	FormaPago                    *Parametros         `orm:"column(forma_pago);rel(fk)"`
-	OrdenadorGasto               string              `orm:"column(ordenador_gasto);null"`
+	OrdenadorGasto               int              `orm:"column(ordenador_gasto)"`
 	ClausulaRegistroPresupuestal bool                `orm:"column(clausula_registro_presupuestal);null"`
 	SedeSolicitante              string              `orm:"column(sede_solicitante);null"`
 	DependenciaSolicitante       string              `orm:"column(dependencia_solicitante);null"`
-	Contratista                  float64             `orm:"column(contratista)"`
-	UnidadEjecucion              *Parametros         `orm:"column(unidad_ejecucion);rel(fk)"`
+	Contratista                  int             `orm:"column(contratista)"`
 	ValorContrato                float64             `orm:"column(valor_contrato)"`
 	Justificacion                string              `orm:"column(justificacion)"`
-	DescripcionFormaPago         string              `orm:"column(descripcion_forma_pago);null"`
-	Condiciones                  string              `orm:"column(condiciones);null"`
-	UnidadEjecutora              int                 `orm:"column(unidad_ejecutora)"`
+	DescripcionFormaPago         string              `orm:"column(descripcion_forma_pago)"`
+	Condiciones                  string              `orm:"column(condiciones)"`
 	FechaRegistro                time.Time           `orm:"column(fecha_registro);type(date)"`
 	TipologiaContrato            int                 `orm:"column(tipologia_contrato)"`
 	TipoCompromiso               int                 `orm:"column(tipo_compromiso)"`
@@ -46,13 +45,28 @@ type ContratoGeneral struct {
 	ClaseContratista             int                 `orm:"column(clase_contratista)"`
 	Convenio                     string              `orm:"column(convenio);null"`
 	NumeroConstancia             int                 `orm:"column(numero_constancia);null"`
+	//RegistroPresupuestal         int                 `orm:"column(resgistro_presupuestal);null"`
 	Estado                       bool                `orm:"column(estado);null"`
 	TipoContrato                 *TipoContrato       `orm:"column(tipo_contrato);rel(fk)"`
-	LugarEjecucion               *LugarEjecucion     `orm:"column(lugar_ejecucion);rel(fk)"`
-	EspecificacionesTecnicas     string              `orm:"column(especificaciones_tecnicas);null"`
-	ClausulasContractuales       string              `orm:"column(clausulas_contractuales);null"`
-	Actividades                  string              `orm:"column(actividades);null"`
-	Usuario                      string              `orm:"column(usuario);null"`
+	LugarEjecucion           *LugarEjecucion `orm:"column(lugar_ejecucion);rel(fk)"`
+	UnidadEjecucion          *Parametros     `orm:"column(unidad_ejecucion);rel(fk)"`
+	UnidadEjecutora          int             `orm:"column(unidad_ejecutora)"`
+	//NumeroCdp                int             `orm:"column(numero_cdp)"`
+	//NumeroSolicitudNecesidad int             `orm:"column(numero_solicitud_necesidad)"`
+}
+
+type TotalContratos struct {
+	NumeroTotal int `orm:"column(total);null"`
+}
+
+type ContratoVinculacion struct {
+	ContratoGeneral    ContratoGeneral
+	VinculacionDocente VinculacionDocente
+}
+
+type ExpedicionResolucion struct {
+	Vinculaciones []ContratoVinculacion
+	IdResolucion  int
 }
 
 func (t *ContratoGeneral) TableName() string {
@@ -61,6 +75,162 @@ func (t *ContratoGeneral) TableName() string {
 
 func init() {
 	orm.RegisterModel(new(ContratoGeneral))
+}
+
+func GetNumeroTotalContratoGeneralDVE(vigencia int) (n int) {
+	o := orm.NewOrm()
+	var temp []TotalContratos
+	_, err := o.Raw("SELECT MAX(substring(numero_contrato,4)::INTEGER) total FROM argo.contrato_general WHERE numero_contrato LIKE 'DVE%' AND vigencia = " + strconv.Itoa(vigencia) + ";").QueryRows(&temp)
+	if err == nil {
+		fmt.Println("Consulta exitosa")
+	}
+
+	return temp[0].NumeroTotal
+}
+
+func AddContratosVinculcionEspecial(m ExpedicionResolucion) (err error) {
+	o := orm.NewOrm()
+	v := m.Vinculaciones
+	var temp []int
+	var numeroId []int
+	o.Begin()
+	vigencia, _, _ := time.Now().Date()
+	numeroContratos := GetNumeroTotalContratoGeneralDVE(vigencia)
+	for _, vinculacion := range v {
+		numeroContratos = numeroContratos + 1
+		v := vinculacion.VinculacionDocente
+		if err = o.Read(&v); err == nil {
+			if v.NumeroContrato == "" && v.Vigencia == 0 {
+				contrato := vinculacion.ContratoGeneral
+				fmt.Println("OTRA MADREAD212156165516A")
+				fmt.Println(contrato.Contratista)
+				aux1 := 181
+				contrato.VigenciaContrato = vigencia
+				contrato.Id = "DVE" + strconv.Itoa(numeroContratos)
+				contrato.FormaPago = &Parametros{Id: 240}
+				contrato.DescripcionFormaPago = "Abono a Cuenta Mensual de acuerdo a puntos y horas laboradas"
+				contrato.Justificacion = "Docente de Vinculacion Especial"
+				contrato.UnidadEjecucion = &Parametros{Id: 205}
+				contrato.LugarEjecucion = &LugarEjecucion{Id: 2}
+				contrato.TipoControl = aux1
+				contrato.ClaseContratista = 33
+				contrato.TipoMoneda = 137
+				contrato.OrigenRecursos = 149
+				contrato.OrigenPresupueso = 156
+				contrato.TemaGastoInversion = 166
+				contrato.TipoGasto = 146
+				contrato.RegimenContratacion = 136
+				contrato.Procedimiento = 132
+				contrato.ModalidadSeleccion = 123
+				contrato.TipoCompromiso = 35
+				contrato.TipologiaContrato = 46
+				contrato.FechaRegistro = time.Now()
+				contrato.UnidadEjecutora = 1
+				contrato.Condiciones = "Sin condiciones"
+				contrato.Supervisor = &SupervisorContrato{Id:192}
+				
+				_, err1 := o.Raw("SELECT id_proveedor FROM agora.informacion_proveedor WHERE num_documento =" + strconv.Itoa(contrato.Contratista) + ";").QueryRows(&temp)
+				if err1 == nil {
+					fmt.Println("Consulta exitosa")
+				}
+				fmt.Println("PUTAZOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO123 final")
+				fmt.Println(contrato)
+
+				//contratoAux := []ContratoGeneral{contrato}
+				//_, err = o.Raw("INSERT INTO argo.contrato_general(numero_contrato, vigencia, objeto_contrato, plazo_ejecucion, forma_pago, ordenador_gasto, sede_solicitante, dependencia_solicitante, numero_solicitud_necesidad, numero_cdp, contratista, unidad_ejecucion, valor_contrato, justificacion, descripcion_forma_pago, condiciones, unidad_ejecutora, fecha_registro, tipologia_contrato, tipo_compromiso, modalidad_seleccion, procedimiento, regimen_contratacion, tipo_gasto, tema_gasto_inversion, origen_presupueso, origen_recursos, tipo_moneda, tipo_control, observaciones, clase_contratista, tipo_contrato, lugar_ejecucion) VALUES (?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", contrato.Id, contrato.VigenciaContrato, contrato.ObjetoContrato, contrato.PlazoEjecucion, contrato.FormaPago.Id, contrato.OrdenadorGasto, contrato.SedeSolicitante, contrato.DependenciaSolicitante, contrato.NumeroSolicitudNecesidad, contrato.NumeroCdp, contrato.Contratista, contrato.UnidadEjecucion.Id, contrato.ValorContrato, contrato.Justificacion, contrato.DescripcionFormaPago, contrato.Condiciones, contrato.UnidadEjecutora, contrato.FechaRegistro.Format(time.RFC1123), contrato.TipologiaContrato, contrato.TipoCompromiso, contrato.ModalidadSeleccion, contrato.Procedimiento, contrato.RegimenContratacion, contrato.TipoGasto, contrato.TemaGastoInversion, contrato.OrigenPresupueso, contrato.OrigenRecursos, contrato.TipoMoneda, contrato.TipoControl, contrato.Observaciones, contrato.ClaseContratista, contrato.TipoContrato, contrato.LugarEjecucion.Id).Exec()
+				  _, err = o.Raw("INSERT INTO argo.contrato_general(numero_contrato, vigencia, objeto_contrato, plazo_ejecucion, forma_pago, ordenador_gasto, sede_solicitante, dependencia_solicitante,                                         contratista, unidad_ejecucion, valor_contrato, justificacion, descripcion_forma_pago, condiciones, unidad_ejecutora, fecha_registro, tipologia_contrato, tipo_compromiso, modalidad_seleccion, procedimiento, regimen_contratacion, tipo_gasto, tema_gasto_inversion, origen_presupueso, origen_recursos, tipo_moneda, tipo_control, observaciones, supervisor,clase_contratista, tipo_contrato, lugar_ejecucion) VALUES (?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)",       contrato.Id, contrato.VigenciaContrato, contrato.ObjetoContrato, contrato.PlazoEjecucion, contrato.FormaPago.Id, contrato.OrdenadorGasto, contrato.SedeSolicitante, contrato.DependenciaSolicitante, temp[0], contrato.UnidadEjecucion.Id, contrato.ValorContrato, contrato.Justificacion, contrato.DescripcionFormaPago, contrato.Condiciones, contrato.UnidadEjecutora, contrato.FechaRegistro.Format(time.RFC1123), contrato.TipologiaContrato, contrato.TipoCompromiso, contrato.ModalidadSeleccion, contrato.Procedimiento, contrato.RegimenContratacion, contrato.TipoGasto, contrato.TemaGastoInversion, contrato.OrigenPresupueso, contrato.OrigenRecursos, contrato.TipoMoneda, contrato.TipoControl, contrato.Observaciones,contrato.Supervisor.Id ,contrato.ClaseContratista, contrato.TipoContrato, contrato.LugarEjecucion.Id).Exec()
+				fmt.Println("Consulta realizada")
+				if err == nil {
+					aux1 := contrato.Id
+					aux2 := contrato.VigenciaContrato
+					e := ContratoEstado{}
+					e.NumeroContrato = aux1
+					e.Vigencia = aux2
+					e.FechaRegistro = time.Now()
+					e.Estado = &EstadoContrato{Id: 4}
+					//_, err = o.Insert(&e)
+					_, err2 := o.Raw("SELECT MAX(id)+1 FROM argo.contrato_estado;").QueryRows(&numeroId)
+					fmt.Println("ESTE ES EL NUMERO DEL ID")
+					fmt.Println(numeroId)
+					e.Id = numeroId[0]
+					fmt.Println("ADASDDAFAS ASFASFSADF")
+					fmt.Println(e.Id)
+					if err2 == nil {
+						fmt.Println("Siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii perra siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+					}
+					_, err = o.Raw("INSERT INTO argo.contrato_estado(numero_contrato, vigencia, fecha_registro, estado, id) VALUES (?, ?, ?, ?, ?)", e.NumeroContrato, e.Vigencia, e.FechaRegistro, e.Estado.Id, e.Id ).Exec()
+					if err == nil {
+						fmt.Println("PUTAZOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO del eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee bitch")
+						a := vinculacion.VinculacionDocente
+						if err = o.Read(&a); err == nil {
+							a.IdPuntoSalarial = vinculacion.VinculacionDocente.IdPuntoSalarial
+							a.IdSalarioMinimo = vinculacion.VinculacionDocente.IdSalarioMinimo
+							v := a
+							v.NumeroContrato = aux1
+							v.Vigencia = aux2
+							_, err = o.Update(&v)
+							if err != nil {
+								o.Rollback()
+								return
+							}
+						} else {
+							o.Rollback()
+							return
+						}
+					} else {
+						fmt.Println("Primer rollback gonoreeassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")						
+						fmt.Println("ERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRRRRRRR: " + err.Error())						
+						o.Rollback()
+						return
+					}
+				} else {
+					fmt.Println("Este es el error: " + err.Error())
+					o.Rollback()
+					return
+				}
+			} else {
+				aux1 := v.NumeroContrato
+				aux2 := v.Vigencia
+				e := ContratoEstado{}
+				e.NumeroContrato = aux1
+				e.Vigencia = aux2
+				e.FechaRegistro = time.Now()
+				e.Estado = &EstadoContrato{Id: 1}
+				//_, err = o.Insert(&e)
+				if err != nil {
+					o.Rollback()
+					return
+				}
+			}
+		} else {
+			o.Rollback()
+			return
+		}
+	}
+	r := &Resolucion{Id: m.IdResolucion}
+	if err = o.Read(r); err == nil {
+		fecha := time.Now()
+		r.FechaExpedicion = fecha
+		if _, err = o.Update(r); err == nil {
+			var e ResolucionEstado
+			e.Resolucion = r
+			e.Estado = &EstadoResolucion{Id: 2}
+			e.FechaRegistro = time.Now()
+			_, err = o.Insert(&e)
+			if err != nil {
+				o.Rollback()
+				return
+			}
+		} else {
+			o.Rollback()
+			return
+		}
+	} else {
+		o.Rollback()
+		return
+	}
+	o.Commit()
+	return
 }
 
 // AddContratoGeneral insert a new ContratoGeneral into database and returns
@@ -73,7 +243,7 @@ func AddContratoGeneral(m *ContratoGeneral) (id int64, err error) {
 
 // GetContratoGeneralById retrieves ContratoGeneral by Id. Returns error if
 // Id doesn't exist
-func GetContratoGeneralById(id int) (v *ContratoGeneral, err error) {
+func GetContratoGeneralById(id string) (v *ContratoGeneral, err error) {
 	o := orm.NewOrm()
 	v = &ContratoGeneral{Id: id}
 	if err = o.Read(v); err == nil {
@@ -138,7 +308,7 @@ func GetAllContratoGeneral(query map[string]string, fields []string, sortby []st
 	}
 
 	var l []ContratoGeneral
-	qs = qs.OrderBy(sortFields...)
+	qs = qs.OrderBy(sortFields...).RelatedSel(5)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
 			for _, v := range l {
@@ -177,7 +347,7 @@ func UpdateContratoGeneralById(m *ContratoGeneral) (err error) {
 
 // DeleteContratoGeneral deletes ContratoGeneral by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteContratoGeneral(id int) (err error) {
+func DeleteContratoGeneral(id string) (err error) {
 	o := orm.NewOrm()
 	v := ContratoGeneral{Id: id}
 	// ascertain id exists in the database

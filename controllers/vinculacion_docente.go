@@ -22,6 +22,28 @@ func (c *VinculacionDocenteController) URLMapping() {
 	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("Put", c.Put)
 	c.Mapping("Delete", c.Delete)
+	c.Mapping("InsertarVinculaciones", c.InsertarVinculaciones)
+}
+
+// Post ...
+// @Title Post
+// @Description create VinculacionDocente
+// @Success 201 {int} models.VinculacionDocente
+// @Failure 403 body is empty
+// @router /InsertarVinculaciones [post]
+func (c *VinculacionDocenteController) InsertarVinculaciones() {
+	var v []models.VinculacionDocente
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		if err := models.AddConjuntoVinculaciones(v); err == nil {
+			c.Ctx.Output.SetStatus(201)
+			c.Data["json"] = v
+		} else {
+			c.Data["json"] = err.Error()
+		}
+	} else {
+		c.Data["json"] = err.Error()
+	}
+	c.ServeJSON()
 }
 
 // Post ...

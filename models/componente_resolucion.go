@@ -10,12 +10,12 @@ import (
 )
 
 type ComponenteResolucion struct {
-	Id              int                           `orm:"column(id);pk"`
+	Id              int                           `orm:"column(id);pk;auto"`
 	Numero          int                           `orm:"column(numero)"`
-	ResolucionId    *ResolucionVinculacionDocente `orm:"column(resolucion_id);rel(fk)"`
+	ResolucionId    *Resolucion					  `orm:"column(resolucion_id);rel(fk)"`
 	Texto           string                        `orm:"column(texto)"`
 	TipoComponente  string                        `orm:"column(tipo_componente)"`
-	ComponentePadre *ComponenteResolucion         `orm:"column(componente_padre);rel(fk)"`
+	ComponentePadre *ComponenteResolucion         `orm:"column(componente_padre);rel(fk);null"`
 }
 
 func (t *ComponenteResolucion) TableName() string {
@@ -50,7 +50,7 @@ func GetComponenteResolucionById(id int) (v *ComponenteResolucion, err error) {
 func GetAllComponenteResolucion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ComponenteResolucion))
+	qs := o.QueryTable(new(ComponenteResolucion)).RelatedSel(5)
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

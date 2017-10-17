@@ -10,7 +10,7 @@ import (
 )
 
 type Escalafon struct {
-	Id              int    `orm:"column(id_escalafon);pk"`
+	Id              int    `orm:"column(id_escalafon);pk;auto"`
 	NombreEscalafon string `orm:"column(nombre_escalafon)"`
 	Descripcion     string `orm:"column(descripcion);null"`
 }
@@ -47,7 +47,7 @@ func GetEscalafonById(id int) (v *Escalafon, err error) {
 func GetAllEscalafon(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Escalafon))
+	qs := o.QueryTable(new(Escalafon)).RelatedSel(5)
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

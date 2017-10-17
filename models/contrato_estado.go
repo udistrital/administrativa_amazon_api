@@ -14,7 +14,7 @@ type ContratoEstado struct {
 	NumeroContrato string          `orm:"column(numero_contrato);null"`
 	Vigencia       int             `orm:"column(vigencia);null"`
 	FechaRegistro  time.Time       `orm:"column(fecha_registro);type(timestamp without time zone);null"`
-	Id             int             `orm:"column(id);pk"`
+	Id             int             `orm:"column(id);pk;auto"`
 	Estado         *EstadoContrato `orm:"column(estado);rel(fk)"`
 	Usuario        string          `orm:"column(usuario);null"`
 }
@@ -51,7 +51,7 @@ func GetContratoEstadoById(id int) (v *ContratoEstado, err error) {
 func GetAllContratoEstado(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ContratoEstado))
+	qs := o.QueryTable(new(ContratoEstado)).RelatedSel(5)
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

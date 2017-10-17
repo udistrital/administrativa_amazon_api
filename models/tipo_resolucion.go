@@ -10,7 +10,7 @@ import (
 )
 
 type TipoResolucion struct {
-	Id                   int    `orm:"column(id_tipo_resolucion);pk"`
+	Id                   int    `orm:"column(id_tipo_resolucion);pk;auto"`
 	NombreTipoResolucion string `orm:"column(nombre_tipo_resolucion)"`
 	Descripcion          string `orm:"column(descripcion);null"`
 }

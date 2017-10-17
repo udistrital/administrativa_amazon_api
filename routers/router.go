@@ -58,6 +58,12 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/resolucion_vinculacion",
+			beego.NSInclude(
+				&controllers.ResolucionVinculacionController{},
+			),
+		),
+
 		beego.NSNamespace("/escalafon_persona",
 			beego.NSInclude(
 				&controllers.EscalafonPersonaController{},
@@ -619,6 +625,24 @@ func init() {
 		beego.NSNamespace("/actividades_centro_costos",
 			beego.NSInclude(
 				&controllers.ActividadesCentroCostosController{},
+			),
+		),
+
+		beego.NSNamespace("/contenido_resolucion",
+			beego.NSInclude(
+				&controllers.ResolucionCompletaController{},
+			),
+		),
+		
+		beego.NSNamespace("/persona_escalafon",
+			beego.NSInclude(
+				&controllers.PersonaEscalafonController{},
+			),
+		),
+
+		beego.NSNamespace("/precontratado",
+			beego.NSInclude(
+				&controllers.PrecontratadoController{},
 			),
 		),
 	)

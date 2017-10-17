@@ -11,17 +11,17 @@ import (
 )
 
 type VinculacionDocente struct {
-	Id                   int                           `orm:"column(id);pk"`
+	Id                   int                           `orm:"column(id);pk;auto"`
 	NumeroContrato       string                        `orm:"column(numero_contrato);null"`
 	Vigencia             int                           `orm:"column(vigencia);null"`
-	IdPersona            float64                       `orm:"column(id_persona)"`
+	IdPersona            int                       `orm:"column(id_persona)"`
 	NumeroHorasSemanales int                           `orm:"column(numero_horas_semanales)"`
 	NumeroSemanas        int                           `orm:"column(numero_semanas)"`
 	IdPuntoSalarial      int                           `orm:"column(id_punto_salarial);null"`
 	IdSalarioMinimo      int                           `orm:"column(id_salario_minimo);null"`
 	IdResolucion         *ResolucionVinculacionDocente `orm:"column(id_resolucion);rel(fk)"`
 	IdDedicacion         *Dedicacion                   `orm:"column(id_dedicacion);rel(fk)"`
-	IdProyectoCurricular int16                         `orm:"column(id_proyecto_curricular)"`
+	IdProyectoCurricular int                         `orm:"column(id_proyecto_curricular)"`
 	Estado               bool                          `orm:"column(estado)"`
 	FechaRegistro        time.Time                     `orm:"column(fecha_registro);type(date)"`
 }
@@ -34,10 +34,28 @@ func init() {
 	orm.RegisterModel(new(VinculacionDocente))
 }
 
+func AddConjuntoVinculaciones(m []VinculacionDocente)(err error){
+	o := orm.NewOrm()
+	o.Begin()
+	for _, vinculacion := range m {
+		vinculacion.Estado=true
+		vinculacion.FechaRegistro=time.Now()
+	    _, err = o.Insert(&vinculacion)
+	    if (err != nil){
+	    	o.Rollback()
+	    	return
+	    }
+	}
+	o.Commit()
+	return
+}
+
 // AddVinculacionDocente insert a new VinculacionDocente into database and returns
 // last inserted Id on success.
 func AddVinculacionDocente(m *VinculacionDocente) (id int64, err error) {
 	o := orm.NewOrm()
+	m.Estado=true
+	m.FechaRegistro=time.Now()
 	id, err = o.Insert(m)
 	return
 }
@@ -58,7 +76,7 @@ func GetVinculacionDocenteById(id int) (v *VinculacionDocente, err error) {
 func GetAllVinculacionDocente(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(VinculacionDocente))
+	qs := o.QueryTable(new(VinculacionDocente)).RelatedSel(5)
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -139,6 +157,7 @@ func UpdateVinculacionDocenteById(m *VinculacionDocente) (err error) {
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
+		m.FechaRegistro=v.FechaRegistro
 		if num, err = o.Update(m); err == nil {
 			fmt.Println("Number of records updated in database:", num)
 		}

@@ -10,7 +10,7 @@ import (
 )
 
 type ResolucionVinculacionDocente struct {
-	Id             int    `orm:"column(id_resolucion);pk"`
+	Id             int    `orm:"column(id_resolucion);pk;auto"`
 	IdFacultad     int    `orm:"column(id_facultad)"`
 	Dedicacion     string `orm:"column(dedicacion)"`
 	NivelAcademico string `orm:"column(nivel_academico)"`

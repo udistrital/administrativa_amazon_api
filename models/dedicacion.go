@@ -10,7 +10,7 @@ import (
 )
 
 type Dedicacion struct {
-	Id               int    `orm:"column(id_dedicacion);pk"`
+	Id               int    `orm:"column(id_dedicacion);pk;auto"`
 	NombreDedicacion string `orm:"column(nombre_dedicacion)"`
 	Descripcion      string `orm:"column(descripcion);null"`
 }
@@ -47,7 +47,7 @@ func GetDedicacionById(id int) (v *Dedicacion, err error) {
 func GetAllDedicacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Dedicacion))
+	qs := o.QueryTable(new(Dedicacion)).RelatedSel(5)
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
