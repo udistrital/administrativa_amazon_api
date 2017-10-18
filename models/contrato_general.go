@@ -62,6 +62,7 @@ type TotalContratos struct {
 type ContratoVinculacion struct {
 	ContratoGeneral    ContratoGeneral
 	VinculacionDocente VinculacionDocente
+	ActaInicio	ActaInicio
 }
 
 type ExpedicionResolucion struct {
@@ -93,15 +94,18 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (err error) {
 	v := m.Vinculaciones
 	var temp []int
 	var numeroId []int
+	var numeroIdActa []int
 	o.Begin()
 	vigencia, _, _ := time.Now().Date()
 	numeroContratos := GetNumeroTotalContratoGeneralDVE(vigencia)
 	for _, vinculacion := range v {
 		numeroContratos = numeroContratos + 1
 		v := vinculacion.VinculacionDocente
+		//actaIni := vinculacion.ActaInicio
 		if err = o.Read(&v); err == nil {
 			if v.NumeroContrato == "" && v.Vigencia == 0 {
 				contrato := vinculacion.ContratoGeneral
+				acta := vinculacion.ActaInicio
 				fmt.Println("OTRA MADREAD212156165516A")
 				fmt.Println(contrato.Contratista)
 				aux1 := 181
@@ -161,22 +165,43 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (err error) {
 					_, err = o.Raw("INSERT INTO argo.contrato_estado(numero_contrato, vigencia, fecha_registro, estado, id) VALUES (?, ?, ?, ?, ?)", e.NumeroContrato, e.Vigencia, e.FechaRegistro, e.Estado.Id, e.Id ).Exec()
 					if err == nil {
 						fmt.Println("PUTAZOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO del eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee bitch")
+						//if err = o.Read(&actaIni); err == nil {
 						a := vinculacion.VinculacionDocente
-						if err = o.Read(&a); err == nil {
-							a.IdPuntoSalarial = vinculacion.VinculacionDocente.IdPuntoSalarial
-							a.IdSalarioMinimo = vinculacion.VinculacionDocente.IdSalarioMinimo
-							v := a
-							v.NumeroContrato = aux1
-							v.Vigencia = aux2
-							_, err = o.Update(&v)
-							if err != nil {
+						i := ActaInicio{}
+						i.NumeroContrato = aux1
+						i.Vigencia = aux2
+						i.Descripcion = acta.Descripcion
+						i.FechaInicio = acta.FechaInicio
+						i.FechaFin = acta.FechaFin
+						_, err3 := o.Raw("SELECT MAX(id)+1 FROM argo.acta_inicio;").QueryRows(&numeroIdActa)
+						if err3 == nil {
+							fmt.Println("Baby don't hurt me, don't hurt me, no more..... What is love? (8)")
+						}
+						fmt.Println("ESTE ES EL NUMERO DEL ID del ACTA MADAFAKA")
+						fmt.Println(numeroIdActa)
+						i.Id = numeroIdActa[0]
+						fmt.Println("ADASDDAFAS ASFASFSADF")
+						fmt.Println(i.Id)
+						_, err = o.Raw("INSERT INTO argo.acta_inicio(numero_contrato, vigencia, descripcion, fecha_inicio, fecha_fin, id) VALUES (?, ?, ?, ?, ?, ?)", i.NumeroContrato, i.Vigencia, i.Descripcion, i.FechaInicio, i.FechaFin, i.Id ).Exec()
+						if err == nil {
+							fmt.Println("Quedó bien el acta perra, ahora falta su cancelación :D")
+							if err = o.Read(&a); err == nil {
+								a.IdPuntoSalarial = vinculacion.VinculacionDocente.IdPuntoSalarial
+								a.IdSalarioMinimo = vinculacion.VinculacionDocente.IdSalarioMinimo
+								v := a
+								v.NumeroContrato = aux1
+								v.Vigencia = aux2
+								_, err = o.Update(&v)
+								if err != nil {
+									o.Rollback()
+									return
+								}
+							} else {
 								o.Rollback()
 								return
 							}
-						} else {
-							o.Rollback()
-							return
 						}
+					//}
 					} else {
 						fmt.Println("Primer rollback gonoreeassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")						
 						fmt.Println("ERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRRRRRRR: " + err.Error())						

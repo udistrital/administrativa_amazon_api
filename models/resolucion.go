@@ -55,7 +55,9 @@ func CancelarResolucion(m *Resolucion) (err error){
 				    	if _, err = o.Insert(&e); err != nil{
 				    		o.Rollback()
 				    		return
-				    	}
+				    	}else{
+							fmt.Println(err)
+						}
 					}
 				}else{
 					o.Rollback()
