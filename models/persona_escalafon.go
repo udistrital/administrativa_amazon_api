@@ -29,3 +29,25 @@ func GetAllPersonaEscalafon() (arregloIDs []PersonaEscalafon) {
 
 	return temp
 }
+
+func GetAllPersonaEscalafonPregrado() (arregloIDs []PersonaEscalafon) {
+	o := orm.NewOrm()
+	var temp []PersonaEscalafon
+	_, err := o.Raw("SELECT ipn.num_documento_persona id, ipn.primer_nombre primer_nombre, ipn.segundo_nombre segundo_nombre,ipn.primer_apellido primer_apellido, ipn.segundo_apellido segundo_apellido, e.nombre_escalafon escalafon FROM agora.informacion_persona_natural ipn INNER JOIN agora.informacion_proveedor ip ON ipn.num_documento_persona=ip.num_documento INNER JOIN administrativa.escalafon_persona ep ON ip.id_proveedor=ep.id_persona_natural INNER JOIN administrativa.escalafon e ON ep.id_escalafon=e.id_escalafon;").QueryRows(&temp)
+	if err == nil {
+		fmt.Println("Consulta exitosa")
+	}
+
+	return temp
+}
+
+func GetAllPersonaEscalafonPosgrado() (arregloIDs []PersonaEscalafon) {
+	o := orm.NewOrm()
+	var temp []PersonaEscalafon
+	_, err := o.Raw("SELECT ipn.num_documento_persona id, ipn.primer_nombre primer_nombre, ipn.segundo_nombre segundo_nombre, ipn.primer_apellido primer_apellido, ipn.segundo_apellido segundo_apellido, e.nombre_escalafon escalafon FROM agora.informacion_persona_natural ipn INNER JOIN agora.informacion_proveedor ip ON ipn.num_documento_persona=ip.num_documento INNER JOIN administrativa.escalafon_persona ep ON ip.id_proveedor=ep.id_persona_natural INNER JOIN administrativa.escalafon e ON ep.id_escalafon=e.id_escalafon WHERE e.nombre_escalafon not like 'AUXILIAR'; ").QueryRows(&temp)
+	if err == nil {
+		fmt.Println("Consulta exitosa")
+	}
+
+	return temp
+}

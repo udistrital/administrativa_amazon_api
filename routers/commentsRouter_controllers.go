@@ -2863,6 +2863,22 @@ func init() {
 			MethodParams: param.Make(),
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:PersonaEscalafonController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:PersonaEscalafonController"],
+		beego.ControllerComments{
+			Method: "GetAllPosgrado",
+			Router: `persona_escalafon_postgrado/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:PersonaEscalafonController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:PersonaEscalafonController"],
+		beego.ControllerComments{
+			Method: "GetAllPregrado",
+			Router: `persona_escalafon_pregrado/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:PlantillaMinutaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:PlantillaMinutaController"],
 		beego.ControllerComments{
 			Method: "Post",

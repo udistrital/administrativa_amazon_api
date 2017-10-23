@@ -26,3 +26,29 @@ func (c *PersonaEscalafonController) GetAll() {
     c.Data["json"] = listaPersonas
     c.ServeJSON()
 }
+
+// GetAllPregrado ...
+// @Title Get All Pregrado
+// @Description get PersonaEscalafon
+// @Success 200 {object} models.PersonaEscalafon
+// @Failure 403
+// @router persona_escalafon_pregrado/ [get]
+func (c *PersonaEscalafonController) GetAllPregrado() {
+  listaPersonas := models.GetAllPersonaEscalafonPregrado()
+  c.Ctx.Output.SetStatus(201)
+  c.Data["json"] = listaPersonas
+  c.ServeJSON()
+}
+
+// GetAllPosgrado ...
+// @Title Get All Postgrado
+// @Description get PersonaEscalafon
+// @Success 200 {object} models.PersonaEscalafon
+// @Failure 403
+// @router persona_escalafon_postgrado/ [get]
+func (c *PersonaEscalafonController) GetAllPosgrado() {
+  listaPersonas := models.GetAllPersonaEscalafonPosgrado()
+  c.Ctx.Output.SetStatus(201)
+  c.Data["json"] = listaPersonas
+  c.ServeJSON()
+}
