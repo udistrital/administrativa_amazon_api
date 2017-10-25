@@ -11,7 +11,7 @@ import (
 )
 
 type ActaInicio struct {
-	Id             int       `orm:"column(id);pk"`
+	Id             int       `orm:"column(id);pk;auto"`
 	NumeroContrato string    `orm:"column(numero_contrato);null"`
 	Vigencia       int       `orm:"column(vigencia);null"`
 	FechaInicio    time.Time `orm:"column(fecha_inicio);type(date);null"`
