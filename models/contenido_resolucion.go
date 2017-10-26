@@ -83,7 +83,7 @@ func UpdateResolucionCompletaById(m *ResolucionCompleta) (err error) {
 	}
 	idResolucionStr := strconv.Itoa(m.Id)
 	r := m.Vinculacion
-	fmt.Println(r.Id)
+	//fmt.Println(r.Id)
 	a := ResolucionVinculacionDocente{Id: r.Id}
 	if err = o.Read(&a); err == nil {
 		_, err = o.Update(&r)
@@ -94,7 +94,7 @@ func UpdateResolucionCompletaById(m *ResolucionCompleta) (err error) {
 		v.ConsideracionResolucion = m.Consideracion
 		v.PreambuloResolucion = m.Preambulo
 		v.NumeroResolucion = m.Numero
-		fmt.Println(v)
+		//fmt.Println(v)
 		if err := UpdateResolucionById(&v); err != nil {
 		}
 

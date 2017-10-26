@@ -42,8 +42,7 @@ func (c *ContratoGeneralController) InsertarContratos() {
 	} else {
 		c.Data["json"] = err.Error()
 	}
-	fmt.Println("Aca podemos observar que pasa tio")
-	fmt.Println(c.Data)
+	//fmt.Println(c.Data)
 	c.ServeJSON()
 }
 

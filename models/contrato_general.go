@@ -81,7 +81,7 @@ func init() {
 func GetNumeroTotalContratoGeneralDVE(vigencia int) (n int) {
 	o := orm.NewOrm()
 	var temp []TotalContratos
-	_, err := o.Raw("SELECT MAX(substring(numero_contrato,4)::INTEGER) total FROM argo.contrato_general WHERE numero_contrato LIKE 'DVE%' AND vigencia = " + strconv.Itoa(vigencia) + ";").QueryRows(&temp)
+	_, err := o.Raw("SELECT COALESCE(MAX(substring(numero_contrato,4)::INTEGER), 0) total FROM argo.contrato_general WHERE numero_contrato LIKE 'DVE%' AND vigencia = " + strconv.Itoa(vigencia) + ";").QueryRows(&temp)
 	if err == nil {
 		fmt.Println("Consulta exitosa")
 	}
@@ -106,7 +106,6 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (err error) {
 			if v.NumeroContrato == "" && v.Vigencia == 0 {
 				contrato := vinculacion.ContratoGeneral
 				acta := vinculacion.ActaInicio
-				fmt.Println("OTRA MADREAD212156165516A")
 				fmt.Println(contrato.Contratista)
 				aux1 := 181
 				contrato.VigenciaContrato = vigencia
@@ -137,7 +136,6 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (err error) {
 				if err1 == nil {
 					fmt.Println("Consulta exitosa")
 				}
-				fmt.Println("PUTAZOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO123 final")
 				fmt.Println(contrato)
 
 				//contratoAux := []ContratoGeneral{contrato}
@@ -153,14 +151,13 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (err error) {
 					e.FechaRegistro = time.Now()
 					e.Estado = &EstadoContrato{Id: 4}
 					//_, err = o.Insert(&e)
-					_, err2 := o.Raw("SELECT MAX(id)+1 FROM argo.contrato_estado;").QueryRows(&numeroId)
+					_, err2 := o.Raw("SELECT COALESCE(MAX(id),0)+1 FROM argo.contrato_estado;").QueryRows(&numeroId)
 					fmt.Println("ESTE ES EL NUMERO DEL ID")
 					fmt.Println(numeroId)
 					e.Id = numeroId[0]
-					fmt.Println("ADASDDAFAS ASFASFSADF")
 					fmt.Println(e.Id)
 					if err2 == nil {
-						fmt.Println("Siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii perra siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+						
 					}
 					_, err = o.Raw("INSERT INTO argo.contrato_estado(numero_contrato, vigencia, fecha_registro, estado, id) VALUES (?, ?, ?, ?, ?)", e.NumeroContrato, e.Vigencia, e.FechaRegistro, e.Estado.Id, e.Id ).Exec()
 					if err == nil {
@@ -175,16 +172,13 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (err error) {
 						i.FechaFin = acta.FechaFin
 						_, err3 := o.Raw("SELECT MAX(id)+1 FROM argo.acta_inicio;").QueryRows(&numeroIdActa)
 						if err3 == nil {
-							fmt.Println("Baby don't hurt me, don't hurt me, no more..... What is love? (8)")
+							
 						}
-						fmt.Println("ESTE ES EL NUMERO DEL ID del ACTA MADAFAKA")
 						fmt.Println(numeroIdActa)
 						i.Id = numeroIdActa[0]
-						fmt.Println("ADASDDAFAS ASFASFSADF")
 						fmt.Println(i.Id)
 						_, err = o.Raw("INSERT INTO argo.acta_inicio(numero_contrato, vigencia, descripcion, fecha_inicio, fecha_fin, id) VALUES (?, ?, ?, ?, ?, ?)", i.NumeroContrato, i.Vigencia, i.Descripcion, i.FechaInicio, i.FechaFin, i.Id ).Exec()
 						if err == nil {
-							fmt.Println("Quedó bien el acta perra, ahora falta su cancelación :D")
 							if err = o.Read(&a); err == nil {
 								a.IdPuntoSalarial = vinculacion.VinculacionDocente.IdPuntoSalarial
 								a.IdSalarioMinimo = vinculacion.VinculacionDocente.IdSalarioMinimo
@@ -202,8 +196,7 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (err error) {
 							}
 						}
 					//}
-					} else {
-						fmt.Println("Primer rollback gonoreeassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss")						
+					} else {					
 						fmt.Println("ERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOORRRRRRRRRRRRRRRRRRRRRRRRRR: " + err.Error())						
 						o.Rollback()
 						return
