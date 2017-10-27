@@ -645,6 +645,12 @@ func init() {
 				&controllers.PrecontratadoController{},
 			),
 		),
+
+		beego.NSNamespace("/proveedor_contrato_persona",
+			beego.NSInclude(
+				&controllers.ProveedorContratoPersonaController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
