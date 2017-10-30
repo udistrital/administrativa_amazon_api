@@ -3,10 +3,10 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/administrativa_amazon_api/models"
 	"strings"
-	"fmt"
+
 	"github.com/astaxie/beego"
+	"github.com/udistrital/administrativa_amazon_api/models"
 )
 
 // ContratoGeneralController operations for ContratoGeneral
@@ -24,6 +24,7 @@ func (c *ContratoGeneralController) URLMapping() {
 	c.Mapping("InsertarContratos", c.InsertarContratos)
 
 }
+
 // InsertarContratos ...
 // @Title Post InsertarContratos
 // @Description create ContratoGenerales
@@ -33,17 +34,15 @@ func (c *ContratoGeneralController) URLMapping() {
 func (c *ContratoGeneralController) InsertarContratos() {
 	var v models.ExpedicionResolucion
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.AddContratosVinculcionEspecial(v); err == nil {
+		if alerta, err := models.AddContratosVinculcionEspecial(v); err == nil {
 			c.Ctx.Output.SetStatus(201)
-			c.Data["json"] = v
+			c.Data["json"] = alerta
 		} else {
-			c.Data["json"] = err.Error()
+			c.Data["json"] = alerta
 		}
 	} else {
 		c.Data["json"] = err.Error()
 	}
-	fmt.Println("Aca podemos observar que pasa tio")
-	fmt.Println(c.Data)
 	c.ServeJSON()
 }
 

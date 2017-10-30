@@ -657,6 +657,12 @@ func init() {
 				&controllers.VigenciaContratoController{},
 			),
 		),
+
+		beego.NSNamespace("/solicitud_rp",
+			beego.NSInclude(
+				&controllers.SolicitudRpController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
