@@ -46,3 +46,12 @@ func VigenciaProveedorContratoPersona(vigencia string) (proveedor_contrato_perso
 	return nil, err
 }
 
+func ProveedorVigenciaContrato(contrato string,vigencia string) (proveedor_contrato_persona []ProveedorContratoPersona, err error) {
+	o := orm.NewOrm()
+	var temp []ProveedorContratoPersona
+	_,err = o.Raw("SELECT * FROM agora.informacion_persona_natural INNER JOIN agora.informacion_proveedor ON agora.informacion_proveedor.num_documento = agora.informacion_persona_natural.num_documento_persona INNER JOIN argo.contrato_general ON agora.informacion_proveedor.id_proveedor = argo.contrato_general.contratista where argo.contrato_general.vigencia="+vigencia+" and argo.contrato_general.numero_contrato='"+contrato+"';").QueryRows(&temp)
+	if err == nil {
+		return temp,nil
+	}
+	return nil, err
+}

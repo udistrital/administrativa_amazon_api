@@ -3065,6 +3065,14 @@ func init() {
 
 	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:ProveedorContratoPersonaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:ProveedorContratoPersonaController"],
 		beego.ControllerComments{
+			Method: "ProveedorVigenciaContrato",
+			Router: `/:contrato/:vigencia`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:ProveedorContratoPersonaController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:ProveedorContratoPersonaController"],
+		beego.ControllerComments{
 			Method: "ProveedorContratoPersona",
 			Router: `/:vigencia`,
 			AllowHTTPMethods: []string{"get"},

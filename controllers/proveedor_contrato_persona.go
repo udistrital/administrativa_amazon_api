@@ -33,3 +33,23 @@ func (c *ProveedorContratoPersonaController) ProveedorContratoPersona() {
 	}
 	c.ServeJSON()
 }
+
+// ProveedorVigenciaContrato ...
+// @Title ProveedorVigenciaContrato
+// @Description create ProveedorContratoPersona
+// @Param	body		body 	models.ProveedorContratoPersona	true		"body for ProveedorContratoPersona content"
+// @Success 201 {int} models.ProveedorContratoPersona
+// @Failure 403 body is empty
+// @router /:contrato/:vigencia [get]
+func (c *ProveedorContratoPersonaController) ProveedorVigenciaContrato() {
+	vigencia := c.Ctx.Input.Param(":vigencia")
+	contrato := c.Ctx.Input.Param(":contrato")
+	respuesta, err := models.ProveedorVigenciaContrato(contrato,vigencia)
+	if err != nil{	
+		c.Data["json"] = err.Error()
+	} else {
+		c.Data["json"] = respuesta
+	}
+	c.ServeJSON()
+}
+
