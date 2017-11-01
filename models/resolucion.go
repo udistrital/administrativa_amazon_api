@@ -266,3 +266,14 @@ func DeleteResolucion(id int) (err error) {
 	}
 	return
 }
+
+func GetVigenciaResolucion() (vigencias []int) {
+	o := orm.NewOrm()
+	var temp []int
+	_, err := o.Raw("SELECT DISTINCT vigencia FROM administrativa.resolucion ORDER BY vigencia DESC;").QueryRows(&temp)
+	if err == nil {
+		fmt.Println("Consulta exitosa")
+	}
+	fmt.Println(temp)
+	return temp
+}

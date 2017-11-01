@@ -239,3 +239,23 @@ func (c *ResolucionController) Delete() {
 	}
 	c.ServeJSON()
 }
+
+// VigenciaResolucion ...
+// @Title VigenciaResolucion
+// @Description create VigenciaResolucion
+// @Param	body		body 	models.VigenciaResolucion	true	"body for VigenciaResolucion content"
+// @Success 201 {int}
+// @Failure 403 body is empty
+// @router /vigencia_resolucion
+func (c *ResolucionController) VigenciaResolucion() {
+	respuesta := models.GetVigenciaResolucion()
+	if len(respuesta) == 0 {
+		c.Ctx.Output.SetStatus(201)
+		c.Data["json"] = "Error leyendo las vigencias"
+		c.ServeJSON()
+	} else {
+		c.Ctx.Output.SetStatus(201)
+		c.Data["json"] = respuesta
+		c.ServeJSON()
+	}
+}
