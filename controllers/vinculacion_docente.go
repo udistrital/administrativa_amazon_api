@@ -3,9 +3,11 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/administrativa_amazon_api/models"
+	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/udistrital/administrativa_amazon_api/models"
 
 	"github.com/astaxie/beego"
 )
@@ -38,9 +40,13 @@ func (c *VinculacionDocenteController) InsertarVinculaciones() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
+			fmt.Println("ERROR interno")
+			fmt.Println(err)
 			c.Data["json"] = err.Error()
 		}
 	} else {
+		fmt.Println("ERROR")
+		fmt.Println(err)
 		c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()

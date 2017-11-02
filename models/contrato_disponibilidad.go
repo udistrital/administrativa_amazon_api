@@ -11,7 +11,7 @@ import (
 )
 
 type ContratoDisponibilidad struct {
-	Id             int       `orm:"column(id);pk"`
+	Id             int       `orm:"column(id);pk;auto"`
 	NumeroCdp      int       `orm:"column(numero_cdp);null"`
 	NumeroContrato string    `orm:"column(numero_contrato);null"`
 	Vigencia       int       `orm:"column(vigencia);null"`

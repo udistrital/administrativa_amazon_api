@@ -63,6 +63,7 @@ type ContratoVinculacion struct {
 	ContratoGeneral    ContratoGeneral
 	VinculacionDocente VinculacionDocente
 	ActaInicio         ActaInicio
+	Cdp                ContratoDisponibilidad
 }
 
 type ExpedicionResolucion struct {
@@ -167,7 +168,23 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (alerta []string, er
 							alerta[0] = "error"
 							alerta = append(alerta, "Error: ¡Ocurrió un error al insertar el acta inicio!")
 							return
+						} //AcA
+						cd := ContratoDisponibilidad{}
+						cd.NumeroCdp = vinculacion.Cdp.NumeroCdp
+						cd.NumeroContrato = aux1
+						cd.Vigencia = aux2
+						cd.Estado = true
+						cd.FechaRegistro = time.Now()
+						cd.VigenciaCdp = vinculacion.Cdp.VigenciaCdp
+						if _, err = o.Insert(&cd); err != nil {
+							fmt.Println(err)
+							o.Rollback()
+							alerta[0] = "error"
+							alerta = append(alerta, "Error: ¡Ocurrió un error al insertar en Contrato Disponibilidad!")
+							return
 						}
+
+						//ACA
 						if err == nil {
 							if err = o.Read(&a); err == nil {
 								a.IdPuntoSalarial = vinculacion.VinculacionDocente.IdPuntoSalarial
@@ -188,7 +205,9 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (alerta []string, er
 								o.Rollback()
 								return
 							}
-						}
+						} //xD
+
+						//Aca
 					} else {
 						alerta[0] = "error"
 						alerta = append(alerta, "Error: ¡Ocurrió un error!")
