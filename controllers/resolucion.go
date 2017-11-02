@@ -239,3 +239,46 @@ func (c *ResolucionController) Delete() {
 	}
 	c.ServeJSON()
 }
+
+// VigenciaResolucion ...
+// @Title VigenciaResolucion
+// @Description create VigenciaResolucion
+// @Param	body		body 	models.VigenciaResolucion	true	"body for VigenciaResolucion content"
+// @Success 201 {int}
+// @Failure 403 body is empty
+// @router /vigencia_resolucion
+func (c *ResolucionController) VigenciaResolucion() {
+	respuesta := models.GetVigenciaResolucion()
+	if len(respuesta) == 0 {
+		c.Ctx.Output.SetStatus(201)
+		c.Data["json"] = "Error leyendo las vigencias"
+		c.ServeJSON()
+	} else {
+		c.Ctx.Output.SetStatus(201)
+		c.Data["json"] = respuesta
+		c.ServeJSON()
+	}
+}
+
+
+// ResolucionEstado ...
+// @Title ResolucionEstado
+// @Description create ResolucionEstado
+// @Param	body		body 	models.Resolucion	true	"body for Resolucion content"
+// @Success 201 {int}
+// @Failure 403 body is empty
+// @router /resolucion_por_estado/:vigencia/:estado
+func (c *ResolucionController) ResolucionEstado() {
+	vigencia := c.Ctx.Input.Param(":vigencia")
+	estado := c.Ctx.Input.Param(":estado")
+	respuesta := models.GetResolucionEstadoVigencia(vigencia,estado)
+	if len(respuesta) == 0 {
+		c.Ctx.Output.SetStatus(201)
+		c.Data["json"] = "Error leyendo las vigencias"
+		c.ServeJSON()
+	} else {
+		c.Ctx.Output.SetStatus(201)
+		c.Data["json"] = respuesta
+		c.ServeJSON()
+	}
+}

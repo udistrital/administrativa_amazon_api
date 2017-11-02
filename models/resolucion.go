@@ -266,3 +266,33 @@ func DeleteResolucion(id int) (err error) {
 	}
 	return
 }
+
+func GetVigenciaResolucion() (vigencias []int) {
+	o := orm.NewOrm()
+	var temp []int
+	_, err := o.Raw("SELECT DISTINCT vigencia FROM administrativa.resolucion ORDER BY vigencia DESC;").QueryRows(&temp)
+	if err == nil {
+		fmt.Println("Consulta exitosa")
+	}
+	fmt.Println(temp)
+	return temp
+}
+
+func GetResolucionEstadoVigencia(vigencia string,estado string) (resoluciones []Resolucion) {
+	o := orm.NewOrm()
+	var temp []int
+	var temp_resoluciones []Resolucion
+	_, err2 := o.Raw("SELECT re.resolucion FROM administrativa.resolucion_estado as re , administrativa.resolucion as r WHERE re.resolucion = r.id_resolucion AND re.fecha_registro = (SELECT MAX(re.fecha_registro) from administrativa.resolucion_estado as re  where r.id_resolucion = re.resolucion ) and re.estado = "+estado+" and r.vigencia = "+vigencia+" order by re.resolucion asc;").QueryRows(&temp)
+	if err2 == nil {
+		fmt.Println("Consulta exitosa")
+	}
+	for i:=0;i<len(temp);i++{
+		temp_resolucion,err:=GetResolucionById(temp[i])
+		if err == nil {
+			temp_resoluciones=append(temp_resoluciones,*temp_resolucion)
+			fmt.Println("Consulta exitosa")
+		}
+		
+	}
+	return temp_resoluciones
+}

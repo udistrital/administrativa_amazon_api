@@ -3447,6 +3447,22 @@ func init() {
 			MethodParams: param.Make(),
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:ResolucionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:ResolucionController"],
+		beego.ControllerComments{
+			Method: "ResolucionEstado",
+			Router: `/resolucion_por_estado/:vigencia/:estado`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:ResolucionController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:ResolucionController"],
+		beego.ControllerComments{
+			Method: "VigenciaResolucion",
+			Router: `/vigencia_resolucion`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:ResolucionEstadoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:ResolucionEstadoController"],
 		beego.ControllerComments{
 			Method: "Post",
