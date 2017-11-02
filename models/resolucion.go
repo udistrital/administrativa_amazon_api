@@ -287,8 +287,7 @@ func GetResolucionEstadoVigencia(vigencia string,estado string) (resoluciones []
 		fmt.Println("Consulta exitosa")
 	}
 	for i:=0;i<len(temp);i++{
-		fmt.Println(temp[i])
-		temp_resolucion,err:=GetResolucionById(44)
+		temp_resolucion,err:=GetResolucionById(temp[i])
 		if err == nil {
 			temp_resoluciones=append(temp_resoluciones,*temp_resolucion)
 			fmt.Println("Consulta exitosa")
