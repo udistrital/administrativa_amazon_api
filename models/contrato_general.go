@@ -114,7 +114,7 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (alerta []string, er
 				contrato.DescripcionFormaPago = "Abono a Cuenta Mensual de acuerdo a puntos y horas laboradas"
 				contrato.Justificacion = "Docente de Vinculacion Especial"
 				contrato.UnidadEjecucion = &Parametros{Id: 205}
-				contrato.LugarEjecucion = &LugarEjecucion{Id: 2}
+				contrato.LugarEjecucion = &LugarEjecucion{Id: 4}
 				contrato.TipoControl = aux1
 				contrato.ClaseContratista = 33
 				contrato.TipoMoneda = 137
