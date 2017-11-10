@@ -3,9 +3,9 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/administrativa_amazon_api/models"
-	"strconv"
 	"strings"
+
+	"github.com/udistrital/administrativa_amazon_api/models"
 
 	"github.com/astaxie/beego"
 )
@@ -54,8 +54,7 @@ func (c *InformacionPersonaNaturalController) Post() {
 // @Failure 403 :id is empty
 // @router /:id [get]
 func (c *InformacionPersonaNaturalController) GetOne() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
+	id := c.Ctx.Input.Param(":id")
 	v, err := models.GetInformacionPersonaNaturalById(id)
 	if err != nil {
 		c.Data["json"] = err.Error()
@@ -137,8 +136,7 @@ func (c *InformacionPersonaNaturalController) GetAll() {
 // @Failure 403 :id is not int
 // @router /:id [put]
 func (c *InformacionPersonaNaturalController) Put() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
+	id := c.Ctx.Input.Param(":id")
 	v := models.InformacionPersonaNatural{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateInformacionPersonaNaturalById(&v); err == nil {
@@ -160,8 +158,7 @@ func (c *InformacionPersonaNaturalController) Put() {
 // @Failure 403 id is empty
 // @router /:id [delete]
 func (c *InformacionPersonaNaturalController) Delete() {
-	idStr := c.Ctx.Input.Param(":id")
-	id, _ := strconv.Atoi(idStr)
+	id := c.Ctx.Input.Param(":id")
 	if err := models.DeleteInformacionPersonaNatural(id); err == nil {
 		c.Data["json"] = "OK"
 	} else {

@@ -132,7 +132,7 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (alerta []string, er
 				contrato.Condiciones = "Sin condiciones"
 				contrato.Supervisor = &SupervisorContrato{Id: 192}
 
-				_, err1 := o.Raw("SELECT id_proveedor FROM agora.informacion_proveedor WHERE num_documento =" + strconv.Itoa(contrato.Contratista) + ";").QueryRows(&temp)
+				_, err1 := o.Raw("SELECT id_proveedor FROM agora.informacion_proveedor WHERE num_documento = " + strconv.Itoa(contrato.Contratista) + ";").QueryRows(&temp)
 				if err1 == nil {
 					fmt.Println("Consulta exitosa")
 				}

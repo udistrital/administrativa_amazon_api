@@ -12,7 +12,7 @@ import (
 
 type InformacionPersonaNatural struct {
 	TipoDocumento                     *ParametroEstandar `orm:"column(tipo_documento);rel(fk)"`
-	Id                                int                `orm:"column(num_documento_persona);pk"`
+	Id                                string             `orm:"column(num_documento_persona);pk"`
 	DigitoVerificacion                float64            `orm:"column(digito_verificacion)"`
 	PrimerApellido                    string             `orm:"column(primer_apellido)"`
 	SegundoApellido                   string             `orm:"column(segundo_apellido);null"`
@@ -64,15 +64,15 @@ func init() {
 
 // AddInformacionPersonaNatural insert a new InformacionPersonaNatural into database and returns
 // last inserted Id on success.
-func AddInformacionPersonaNatural(m *InformacionPersonaNatural) (id int64, err error) {
+func AddInformacionPersonaNatural(m *InformacionPersonaNatural) (id string, err error) {
 	o := orm.NewOrm()
-	id, err = o.Insert(m)
+	_, err = o.Insert(m)
 	return
 }
 
 // GetInformacionPersonaNaturalById retrieves InformacionPersonaNatural by Id. Returns error if
 // Id doesn't exist
-func GetInformacionPersonaNaturalById(id int) (v *InformacionPersonaNatural, err error) {
+func GetInformacionPersonaNaturalById(id string) (v *InformacionPersonaNatural, err error) {
 	o := orm.NewOrm()
 	v = &InformacionPersonaNatural{Id: id}
 	if err = o.Read(v); err == nil {
@@ -176,7 +176,7 @@ func UpdateInformacionPersonaNaturalById(m *InformacionPersonaNatural) (err erro
 
 // DeleteInformacionPersonaNatural deletes InformacionPersonaNatural by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteInformacionPersonaNatural(id int) (err error) {
+func DeleteInformacionPersonaNatural(id string) (err error) {
 	o := orm.NewOrm()
 	v := InformacionPersonaNatural{Id: id}
 	// ascertain id exists in the database
