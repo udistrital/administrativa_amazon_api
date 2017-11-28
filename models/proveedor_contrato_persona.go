@@ -29,7 +29,8 @@ type ProveedorContratoPersona struct {
 	Numero_cdp int `orm:"column(numero_cdp)"`
 	Unidad_ejecucion int `orm:"column(unidad_ejecucion)"`
 	Id_proveedor string `orm:"column(id_proveedor)"`
-
+	Consecutivo_contrato string `orm:"column(consecutivo_contrato_suscrito)"`
+	Numero_suscrito string `orm:"column(numero_contrato_suscrito)"`
 }
 
 func init() {
@@ -39,7 +40,7 @@ func init() {
 func VigenciaProveedorContratoPersona(vigencia string) (proveedor_contrato_persona []ProveedorContratoPersona, err error) {
 	o := orm.NewOrm()
 	var temp []ProveedorContratoPersona
-	_,err = o.Raw("SELECT * FROM agora.informacion_persona_natural INNER JOIN agora.informacion_proveedor ON agora.informacion_proveedor.num_documento LIKE agora.informacion_persona_natural.num_documento_persona INNER JOIN argo.contrato_general ON agora.informacion_proveedor.id_proveedor = argo.contrato_general.contratista where argo.contrato_general.vigencia="+vigencia+";").QueryRows(&temp)
+	_,err = o.Raw("SELECT * FROM agora.informacion_persona_natural INNER JOIN agora.informacion_proveedor ON agora.informacion_proveedor.num_documento = agora.informacion_persona_natural.num_documento_persona INNER JOIN argo.contrato_general ON agora.informacion_proveedor.id_proveedor = argo.contrato_general.contratista INNER JOIN argo.contrato_suscrito ON argo.contrato_suscrito.numero_contrato=argo.contrato_general.numero_contrato AND argo.contrato_suscrito.vigencia=argo.contrato_general.vigencia where argo.contrato_general.vigencia="+vigencia+";").QueryRows(&temp)
 	if err == nil {
 		return temp,nil
 	}
@@ -49,7 +50,7 @@ func VigenciaProveedorContratoPersona(vigencia string) (proveedor_contrato_perso
 func ProveedorVigenciaContrato(contrato string,vigencia string) (proveedor_contrato_persona []ProveedorContratoPersona, err error) {
 	o := orm.NewOrm()
 	var temp []ProveedorContratoPersona
-	_,err = o.Raw("SELECT * FROM agora.informacion_persona_natural INNER JOIN agora.informacion_proveedor ON agora.informacion_proveedor.num_documento LIKE agora.informacion_persona_natural.num_documento_persona INNER JOIN argo.contrato_general ON agora.informacion_proveedor.id_proveedor = argo.contrato_general.contratista where argo.contrato_general.vigencia="+vigencia+" and argo.contrato_general.numero_contrato='"+contrato+"';").QueryRows(&temp)
+	_,err = o.Raw("SELECT * FROM agora.informacion_persona_natural INNER JOIN agora.informacion_proveedor ON agora.informacion_proveedor.num_documento = agora.informacion_persona_natural.num_documento_persona INNER JOIN argo.contrato_general ON agora.informacion_proveedor.id_proveedor = argo.contrato_general.contratista INNER JOIN argo.contrato_suscrito ON argo.contrato_suscrito.numero_contrato=argo.contrato_general.numero_contrato AND argo.contrato_suscrito.vigencia=argo.contrato_general.vigencia where argo.contrato_general.vigencia="+vigencia+" and argo.contrato_general.numero_contrato='"+contrato+"';").QueryRows(&temp)
 	if err == nil {
 		return temp,nil
 	}
