@@ -22,6 +22,8 @@ type Resolucion struct {
 	Estado                  bool            `orm:"column(estado)"`
 	FechaRegistro           time.Time       `orm:"column(fecha_registro);type(date)"`
 	Objeto                  string          `orm:"column(objeto);null"`
+	NumeroSemanas           int             `orm:"column(numero_semanas)"`
+	Periodo                 int             `orm:"column(periodo)"`
 }
 
 func (t *Resolucion) TableName() string {
@@ -32,36 +34,36 @@ func init() {
 	orm.RegisterModel(new(Resolucion))
 }
 
-func CancelarResolucion(m *Resolucion) (err error){
+func CancelarResolucion(m *Resolucion) (err error) {
 	o := orm.NewOrm()
 	o.Begin()
 	v := ResolucionVinculacionDocente{Id: m.Id}
-	if err = o.Read(&v); err == nil { 
+	if err = o.Read(&v); err == nil {
 		var vinculacion_docente []*VinculacionDocente
-		_, err=o.QueryTable("vinculacion_docente").Filter("id_resolucion",m.Id).Filter("estado",true).All(&vinculacion_docente)
-		for _, vd := range vinculacion_docente{
+		_, err = o.QueryTable("vinculacion_docente").Filter("id_resolucion", m.Id).Filter("estado", true).All(&vinculacion_docente)
+		for _, vd := range vinculacion_docente {
 			var contratos_generales []*ContratoGeneral
-			if(vd.NumeroContrato!="" && vd.Vigencia!=0){
-				_, err=o.QueryTable("contrato_general").Filter("numero_contrato",vd.NumeroContrato).Filter("vigencia",vd.Vigencia).All(&contratos_generales)
-				if(err == nil){
-					for _, c := range contratos_generales{
+			if vd.NumeroContrato != "" && vd.Vigencia != 0 {
+				_, err = o.QueryTable("contrato_general").Filter("numero_contrato", vd.NumeroContrato).Filter("vigencia", vd.Vigencia).All(&contratos_generales)
+				if err == nil {
+					for _, c := range contratos_generales {
 						aux1 := c.Id
-				    	aux2 := c.VigenciaContrato
-				    	e:=ContratoEstado{}
-				    	e.NumeroContrato = aux1
-				    	e.Vigencia = aux2
-				    	e.FechaRegistro=time.Now()
-				    	e.Estado=&EstadoContrato{Id:7}
-				    	if _, err = o.Insert(&e); err != nil{
-				    		o.Rollback()
-				    		return
-				    	}else{
+						aux2 := c.VigenciaContrato
+						e := ContratoEstado{}
+						e.NumeroContrato = aux1
+						e.Vigencia = aux2
+						e.FechaRegistro = time.Now()
+						e.Estado = &EstadoContrato{Id: 7}
+						if _, err = o.Insert(&e); err != nil {
+							o.Rollback()
+							return
+						} else {
 							fmt.Println(err)
 						}
 					}
-				}else{
+				} else {
 					o.Rollback()
-				    return
+					return
 				}
 			}
 		}
@@ -72,17 +74,17 @@ func CancelarResolucion(m *Resolucion) (err error){
 			e.Estado = &EstadoResolucion{Id: 3}
 			e.FechaRegistro = time.Now()
 			_, err = o.Insert(&e)
-			if(err==nil){
+			if err == nil {
 				fmt.Println("Number of records updated in database:", num)
-			}else{
+			} else {
 				o.Rollback()
 				return
 			}
-		}else{
+		} else {
 			o.Rollback()
 			return
 		}
-	}else{
+	} else {
 		o.Rollback()
 		return
 	}
@@ -93,22 +95,22 @@ func CancelarResolucion(m *Resolucion) (err error){
 func GenerarResolucion(m *Resolucion) (id int64, err error) {
 	o := orm.NewOrm()
 	o.Begin()
-	m.Vigencia, _, _=time.Now().Date()
-	m.FechaRegistro=time.Now()
-	m.Estado=true
-	m.IdTipoResolucion=&TipoResolucion{Id: 1}
+	m.Vigencia, _, _ = time.Now().Date()
+	m.FechaRegistro = time.Now()
+	m.Estado = true
+	m.IdTipoResolucion = &TipoResolucion{Id: 1}
 	id, err = o.Insert(m)
-	if(err==nil){
+	if err == nil {
 		var e ResolucionEstado
 		e.Resolucion = m
 		e.Estado = &EstadoResolucion{Id: 1}
 		e.FechaRegistro = time.Now()
 		_, err = o.Insert(&e)
-		if(err!=nil){
+		if err != nil {
 			o.Rollback()
 			return
 		}
-	}else{
+	} else {
 		o.Rollback()
 		return
 	}
@@ -116,7 +118,7 @@ func GenerarResolucion(m *Resolucion) (id int64, err error) {
 	return
 }
 
-func RestaurarResolucion(m *Resolucion) (err error){
+func RestaurarResolucion(m *Resolucion) (err error) {
 	o := orm.NewOrm()
 	o.Begin()
 	var num int64
@@ -126,13 +128,13 @@ func RestaurarResolucion(m *Resolucion) (err error){
 		e.Estado = &EstadoResolucion{Id: 1}
 		e.FechaRegistro = time.Now()
 		_, err = o.Insert(&e)
-		if(err==nil){
+		if err == nil {
 			fmt.Println("Number of records updated in database:", num)
-		}else{
+		} else {
 			o.Rollback()
 			return
 		}
-	}else{
+	} else {
 		o.Rollback()
 		return
 	}
@@ -278,21 +280,21 @@ func GetVigenciaResolucion() (vigencias []int) {
 	return temp
 }
 
-func GetResolucionEstadoVigencia(vigencia string,estado string) (resoluciones []Resolucion) {
+func GetResolucionEstadoVigencia(vigencia string, estado string) (resoluciones []Resolucion) {
 	o := orm.NewOrm()
 	var temp []int
 	var temp_resoluciones []Resolucion
-	_, err2 := o.Raw("SELECT re.resolucion FROM administrativa.resolucion_estado as re , administrativa.resolucion as r WHERE re.resolucion = r.id_resolucion AND re.fecha_registro = (SELECT MAX(re.fecha_registro) from administrativa.resolucion_estado as re  where r.id_resolucion = re.resolucion ) and re.estado = "+estado+" and r.vigencia = "+vigencia+" order by re.resolucion asc;").QueryRows(&temp)
+	_, err2 := o.Raw("SELECT re.resolucion FROM administrativa.resolucion_estado as re , administrativa.resolucion as r WHERE re.resolucion = r.id_resolucion AND re.fecha_registro = (SELECT MAX(re.fecha_registro) from administrativa.resolucion_estado as re  where r.id_resolucion = re.resolucion ) and re.estado = " + estado + " and r.vigencia = " + vigencia + " order by re.resolucion asc;").QueryRows(&temp)
 	if err2 == nil {
 		fmt.Println("Consulta exitosa")
 	}
-	for i:=0;i<len(temp);i++{
-		temp_resolucion,err:=GetResolucionById(temp[i])
+	for i := 0; i < len(temp); i++ {
+		temp_resolucion, err := GetResolucionById(temp[i])
 		if err == nil {
-			temp_resoluciones=append(temp_resoluciones,*temp_resolucion)
+			temp_resoluciones = append(temp_resoluciones, *temp_resolucion)
 			fmt.Println("Consulta exitosa")
 		}
-		
+
 	}
 	return temp_resoluciones
 }

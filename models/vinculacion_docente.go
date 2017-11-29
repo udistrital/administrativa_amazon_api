@@ -24,6 +24,7 @@ type VinculacionDocente struct {
 	IdProyectoCurricular int                           `orm:"column(id_proyecto_curricular)"`
 	Estado               bool                          `orm:"column(estado)"`
 	FechaRegistro        time.Time                     `orm:"column(fecha_registro);type(date)"`
+	ValorContrato        float64                       `orm:"column(valor_contrato)"`
 }
 
 func (t *VinculacionDocente) TableName() string {
