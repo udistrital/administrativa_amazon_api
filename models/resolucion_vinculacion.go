@@ -16,7 +16,7 @@ type ResolucionVinculacion struct {
 	NivelAcademico  string    `orm:"column(nivel_academico)"`
 	Dedicacion      string    `orm:"column(dedicacion)"`
 	FechaExpedicion time.Time `orm:"column(fecha_expedicion);type(date)"`
-	NumeroSemanas   int       `orm:"column(numSemanas)"`
+	NumeroSemanas   int       `orm:"column(numsemanas)"`
 	Periodo         int       `orm:"column(periodo)"`
 }
 
