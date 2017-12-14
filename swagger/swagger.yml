@@ -14480,6 +14480,11 @@ definitions:
     title: VinculacionDocente
     type: object
     properties:
+      Categoria:
+        type: string
+      Disponibilidad:
+        type: integer
+        format: int64
       Estado:
         type: boolean
       FechaRegistro:
