@@ -11,13 +11,13 @@ import (
 )
 
 type ContratoSuscrito struct {
-	Id                     int       `orm:"column(consecutivo_contrato_suscrito);pk"`
-	NumeroContrato         string    `orm:"column(numero_contrato);null"`
-	Vigencia               int       `orm:"column(vigencia);null"`
-	FechaRegistro          time.Time `orm:"column(fecha_registro);type(date);null"`
-	Usuario                string    `orm:"column(usuario);null"`
-	FechaSuscripcion       time.Time `orm:"column(fecha_suscripcion);type(date);null"`
-	NumeroContratoSuscrito string    `orm:"column(numero_contrato_suscrito);null"`
+	Id                     int              `orm:"column(consecutivo_contrato_suscrito);pk"`
+	NumeroContrato         *ContratoGeneral `orm:"column(numero_contrato);rel(fk)"`
+	Vigencia               int              `orm:"column(vigencia);null"`
+	FechaRegistro          time.Time        `orm:"column(fecha_registro);type(date);null"`
+	Usuario                string           `orm:"column(usuario);null"`
+	FechaSuscripcion       time.Time        `orm:"column(fecha_suscripcion);type(date);null"`
+	NumeroContratoSuscrito string           `orm:"column(numero_contrato_suscrito);null"`
 }
 
 func (t *ContratoSuscrito) TableName() string {
