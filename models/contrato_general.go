@@ -53,6 +53,7 @@ type ContratoGeneral struct {
 	UnidadEjecutora int             `orm:"column(unidad_ejecutora)"`
 	//NumeroCdp                int             `orm:"column(numero_cdp)"`
 	//NumeroSolicitudNecesidad int             `orm:"column(numero_solicitud_necesidad)"`
+	ContratoSuscrito []*ContratoSuscrito `orm:"reverse(many)"`
 }
 
 type TotalContratos struct {
@@ -355,6 +356,7 @@ func GetAllContratoGeneral(query map[string]string, fields []string, sortby []st
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
 			for _, v := range l {
+				o.LoadRelated(&v, "ContratoSuscrito", 5)
 				ml = append(ml, v)
 			}
 		} else {
