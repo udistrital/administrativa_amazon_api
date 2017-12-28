@@ -21,7 +21,7 @@ type ContratoGeneral struct {
 	ClausulaRegistroPresupuestal bool                `orm:"column(clausula_registro_presupuestal);null"`
 	SedeSolicitante              string              `orm:"column(sede_solicitante);null"`
 	DependenciaSolicitante       string              `orm:"column(dependencia_solicitante);null"`
-	Contratista                  *InformacionProveedor         `orm:"column(contratista);rel(fk)"`
+	Contratista                  int         `orm:"column(contratista)"`
 	ValorContrato                float64             `orm:"column(valor_contrato)"`
 	Justificacion                string              `orm:"column(justificacion)"`
 	DescripcionFormaPago         string              `orm:"column(descripcion_forma_pago)"`
