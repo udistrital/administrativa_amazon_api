@@ -3,6 +3,8 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
+	"log"
 	"strings"
 
 	"github.com/astaxie/beego"
@@ -22,7 +24,27 @@ func (c *ContratoGeneralController) URLMapping() {
 	c.Mapping("Put", c.Put)
 	c.Mapping("Delete", c.Delete)
 	c.Mapping("InsertarContratos", c.InsertarContratos)
+	c.Mapping("MaximoConsecutivoDVE", c.MaximoConsecutivoDVE)
+}
 
+// MaximoConsecutivoDVE ...
+// @Title Maximo Consecutivo DVE
+// @Description get max number of the contracts DVE Id
+// @Param	body		body 	models.ContratoGeneral	true	"body for ContratoGeneral content"
+// @Success 201 {int}
+// @Failure 403 body is empty
+// @router /maximo_dve
+func (c *ContratoGeneralController) MaximoConsecutivoDVE() {
+	respuesta := models.GetMaximoDVE()
+	/*if respuesta == nil {
+		c.Ctx.Output.SetStatus(201)
+		c.Data["json"] = "Error leyendo la tabla contrato_general contratos DVE"
+		c.ServeJSON()
+	} else {*/
+	c.Ctx.Output.SetStatus(201)
+	c.Data["json"] = respuesta
+	c.ServeJSON()
+	//}
 }
 
 // InsertarContratos ...
@@ -63,6 +85,16 @@ func (c *ContratoGeneralController) Post() {
 			c.Data["json"] = err.Error()
 		}
 	} else {
+		//
+		if err != nil {
+			fmt.Println("AAAAAAAA")
+			if err.Error() == "no LastInsertId available" {
+				log.Println(err)
+			} else {
+				log.Fatal(err)
+			}
+		}
+		//
 		c.Data["json"] = err.Error()
 	}
 	c.ServeJSON()

@@ -45,11 +45,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActaInicio'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - acta_inicio
@@ -81,7 +79,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActaInicio'
         "403":
@@ -105,7 +102,6 @@ paths:
           $ref: '#/definitions/models.ActaInicio'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActaInicio'
         "403":
@@ -160,11 +156,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActividadEconomicaNecesidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - actividad_economica_necesidad
@@ -196,7 +190,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActividadEconomicaNecesidad'
         "403":
@@ -220,7 +213,6 @@ paths:
           $ref: '#/definitions/models.ActividadEconomicaNecesidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActividadEconomicaNecesidad'
         "403":
@@ -275,11 +267,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActividadSolicitudNecesidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - actividad_solicitud_necesidad
@@ -311,7 +301,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActividadSolicitudNecesidad'
         "403":
@@ -335,7 +324,6 @@ paths:
           $ref: '#/definitions/models.ActividadSolicitudNecesidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActividadSolicitudNecesidad'
         "403":
@@ -390,11 +378,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActividadesCentroCostos'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - actividades_centro_costos
@@ -426,7 +412,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActividadesCentroCostos'
         "403":
@@ -450,7 +435,6 @@ paths:
           $ref: '#/definitions/models.ActividadesCentroCostos'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ActividadesCentroCostos'
         "403":
@@ -505,11 +489,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Adicion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - adicion
@@ -541,7 +523,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Adicion'
         "403":
@@ -565,7 +546,6 @@ paths:
           $ref: '#/definitions/models.Adicion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Adicion'
         "403":
@@ -620,11 +600,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.AmparoContrato'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - amparo_contrato
@@ -656,7 +634,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.AmparoContrato'
         "403":
@@ -680,7 +657,6 @@ paths:
           $ref: '#/definitions/models.AmparoContrato'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.AmparoContrato'
         "403":
@@ -735,11 +711,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.AmparoPoliza'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - amparo_poliza
@@ -771,7 +745,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.AmparoPoliza'
         "403":
@@ -795,7 +768,6 @@ paths:
           $ref: '#/definitions/models.AmparoPoliza'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.AmparoPoliza'
         "403":
@@ -850,11 +822,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Anulacion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - anulacion
@@ -886,7 +856,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Anulacion'
         "403":
@@ -910,7 +879,6 @@ paths:
           $ref: '#/definitions/models.Anulacion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Anulacion'
         "403":
@@ -965,11 +933,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CambioSupervisor'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - cambio_supervisor
@@ -1001,7 +967,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CambioSupervisor'
         "403":
@@ -1025,7 +990,6 @@ paths:
           $ref: '#/definitions/models.CambioSupervisor'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CambioSupervisor'
         "403":
@@ -1080,11 +1044,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CargoSupervisorTemporal'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - cargo_supervisor_temporal
@@ -1116,7 +1078,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CargoSupervisorTemporal'
         "403":
@@ -1140,7 +1101,6 @@ paths:
           $ref: '#/definitions/models.CargoSupervisorTemporal'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CargoSupervisorTemporal'
         "403":
@@ -1195,11 +1155,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CatalogoTemporal'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - catalogo_temporal
@@ -1231,7 +1189,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CatalogoTemporal'
         "403":
@@ -1255,7 +1212,6 @@ paths:
           $ref: '#/definitions/models.CatalogoTemporal'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CatalogoTemporal'
         "403":
@@ -1310,11 +1266,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CentroCostos'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - centro_costos
@@ -1346,7 +1300,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CentroCostos'
         "403":
@@ -1370,7 +1323,6 @@ paths:
           $ref: '#/definitions/models.CentroCostos'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CentroCostos'
         "403":
@@ -1425,11 +1377,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CentroCostosCentroCostos'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - centro_costos_centro_costos
@@ -1461,7 +1411,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CentroCostosCentroCostos'
         "403":
@@ -1485,7 +1434,6 @@ paths:
           $ref: '#/definitions/models.CentroCostosCentroCostos'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CentroCostosCentroCostos'
         "403":
@@ -1540,11 +1488,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Cesion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - cesion
@@ -1576,7 +1522,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Cesion'
         "403":
@@ -1600,7 +1545,6 @@ paths:
           $ref: '#/definitions/models.Cesion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Cesion'
         "403":
@@ -1655,11 +1599,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CodigoValidacion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - codigo_validacion
@@ -1691,7 +1633,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CodigoValidacion'
         "403":
@@ -1715,7 +1656,6 @@ paths:
           $ref: '#/definitions/models.CodigoValidacion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.CodigoValidacion'
         "403":
@@ -1770,11 +1710,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ComponenteResolucion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - componente_resolucion
@@ -1806,7 +1744,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ComponenteResolucion'
         "403":
@@ -1830,7 +1767,6 @@ paths:
           $ref: '#/definitions/models.ComponenteResolucion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ComponenteResolucion'
         "403":
@@ -1865,7 +1801,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ResolucionCompleta'
         "403":
@@ -1883,7 +1818,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ResolucionCompleta'
         "403":
@@ -1902,11 +1836,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ResolucionCompleta'
-        "403":
-          description: ""
+        "403": {}
   /contrato/:
     get:
       tags:
@@ -1941,11 +1873,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Contrato'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato
@@ -1977,7 +1907,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Contrato'
         "403":
@@ -2001,7 +1930,6 @@ paths:
           $ref: '#/definitions/models.Contrato'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Contrato'
         "403":
@@ -2056,11 +1984,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoArrendamiento'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato_arrendamiento
@@ -2092,7 +2018,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoArrendamiento'
         "403":
@@ -2116,7 +2041,6 @@ paths:
           $ref: '#/definitions/models.ContratoArrendamiento'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoArrendamiento'
         "403":
@@ -2171,11 +2095,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoCancelado'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato_cancelado
@@ -2207,7 +2129,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoCancelado'
         "403":
@@ -2231,7 +2152,6 @@ paths:
           $ref: '#/definitions/models.ContratoCancelado'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoCancelado'
         "403":
@@ -2286,11 +2206,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoCps'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato_cps
@@ -2322,7 +2240,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoCps'
         "403":
@@ -2346,7 +2263,6 @@ paths:
           $ref: '#/definitions/models.ContratoCps'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoCps'
         "403":
@@ -2401,11 +2317,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoDisponibilidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato_disponibilidad
@@ -2437,7 +2351,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoDisponibilidad'
         "403":
@@ -2461,7 +2374,6 @@ paths:
           $ref: '#/definitions/models.ContratoDisponibilidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoDisponibilidad'
         "403":
@@ -2516,11 +2428,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoEstado'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato_estado
@@ -2552,7 +2462,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoEstado'
         "403":
@@ -2576,7 +2485,6 @@ paths:
           $ref: '#/definitions/models.ContratoEstado'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoEstado'
         "403":
@@ -2631,11 +2539,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoEvaluacion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato_evaluacion
@@ -2667,7 +2573,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoEvaluacion'
         "403":
@@ -2691,7 +2596,6 @@ paths:
           $ref: '#/definitions/models.ContratoEvaluacion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoEvaluacion'
         "403":
@@ -2746,11 +2650,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoGeneral'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato_general
@@ -2782,7 +2684,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoGeneral'
         "403":
@@ -2806,7 +2707,6 @@ paths:
           $ref: '#/definitions/models.ContratoGeneral'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoGeneral'
         "403":
@@ -2836,6 +2736,24 @@ paths:
       responses:
         "201":
           description: '{int} models.ContratoGeneral'
+        "403":
+          description: body is empty
+  /contrato_general/maximo_dve:
+    get:
+      tags:
+      - contrato_general
+      description: get max number of the contracts DVE Id
+      operationId: ContratoGeneralController.Maximo Consecutivo DVE
+      parameters:
+      - in: body
+        name: body
+        description: body for ContratoGeneral content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ContratoGeneral'
+      responses:
+        "201":
+          description: '{int}'
         "403":
           description: body is empty
   /contrato_liquidado/:
@@ -2872,11 +2790,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoLiquidado'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato_liquidado
@@ -2908,7 +2824,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoLiquidado'
         "403":
@@ -2932,7 +2847,6 @@ paths:
           $ref: '#/definitions/models.ContratoLiquidado'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoLiquidado'
         "403":
@@ -2987,11 +2901,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoProveedor'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato_proveedor
@@ -3023,7 +2935,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoProveedor'
         "403":
@@ -3047,7 +2958,6 @@ paths:
           $ref: '#/definitions/models.ContratoProveedor'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoProveedor'
         "403":
@@ -3102,11 +3012,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoSuscrito'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - contrato_suscrito
@@ -3138,7 +3046,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoSuscrito'
         "403":
@@ -3162,7 +3069,6 @@ paths:
           $ref: '#/definitions/models.ContratoSuscrito'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ContratoSuscrito'
         "403":
@@ -3217,11 +3123,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Convenio'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - convenio
@@ -3253,7 +3157,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Convenio'
         "403":
@@ -3277,7 +3180,6 @@ paths:
           $ref: '#/definitions/models.Convenio'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Convenio'
         "403":
@@ -3332,11 +3234,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Dedicacion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - dedicacion
@@ -3368,7 +3268,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Dedicacion'
         "403":
@@ -3392,7 +3291,6 @@ paths:
           $ref: '#/definitions/models.Dedicacion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Dedicacion'
         "403":
@@ -3447,11 +3345,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DependenciaSIC'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - dependencia_SIC
@@ -3483,7 +3379,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DependenciaSIC'
         "403":
@@ -3507,7 +3402,6 @@ paths:
           $ref: '#/definitions/models.DependenciaSIC'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DependenciaSIC'
         "403":
@@ -3562,11 +3456,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DependenciaDependenciaTemporal'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - dependencia_dependencia_temporal
@@ -3598,7 +3490,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DependenciaDependenciaTemporal'
         "403":
@@ -3622,7 +3513,6 @@ paths:
           $ref: '#/definitions/models.DependenciaDependenciaTemporal'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DependenciaDependenciaTemporal'
         "403":
@@ -3677,11 +3567,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DependenciaTemporal'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - dependencia_temporal
@@ -3713,7 +3601,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DependenciaTemporal'
         "403":
@@ -3737,7 +3624,6 @@ paths:
           $ref: '#/definitions/models.DependenciaTemporal'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DependenciaTemporal'
         "403":
@@ -3792,11 +3678,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DisponibilidadApropiacionSolicitudRp'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - disponibilidad_apropiacion_solicitud_rp
@@ -3828,7 +3712,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DisponibilidadApropiacionSolicitudRp'
         "403":
@@ -3852,7 +3735,6 @@ paths:
           $ref: '#/definitions/models.DisponibilidadApropiacionSolicitudRp'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.DisponibilidadApropiacionSolicitudRp'
         "403":
@@ -3907,11 +3789,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ElementoActaRecibido'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - elemento_acta_recibido
@@ -3943,7 +3823,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ElementoActaRecibido'
         "403":
@@ -3967,7 +3846,6 @@ paths:
           $ref: '#/definitions/models.ElementoActaRecibido'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ElementoActaRecibido'
         "403":
@@ -4022,11 +3900,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Escalafon'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - escalafon
@@ -4058,7 +3934,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Escalafon'
         "403":
@@ -4082,7 +3957,6 @@ paths:
           $ref: '#/definitions/models.Escalafon'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Escalafon'
         "403":
@@ -4137,11 +4011,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EscalafonPersona'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - escalafon_persona
@@ -4173,7 +4045,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EscalafonPersona'
         "403":
@@ -4197,7 +4068,6 @@ paths:
           $ref: '#/definitions/models.EscalafonPersona'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EscalafonPersona'
         "403":
@@ -4252,11 +4122,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EspaciosfisicosSIC'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - espaciosfisicos_SIC
@@ -4288,7 +4156,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EspaciosfisicosSIC'
         "403":
@@ -4312,7 +4179,6 @@ paths:
           $ref: '#/definitions/models.EspaciosfisicosSIC'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EspaciosfisicosSIC'
         "403":
@@ -4367,11 +4233,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EspecificacionTecnica'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - especificacion_tecnica
@@ -4403,7 +4267,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EspecificacionTecnica'
         "403":
@@ -4427,7 +4290,6 @@ paths:
           $ref: '#/definitions/models.EspecificacionTecnica'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EspecificacionTecnica'
         "403":
@@ -4482,11 +4344,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EstadoContrato'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - estado_contrato
@@ -4518,7 +4378,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EstadoContrato'
         "403":
@@ -4542,7 +4401,6 @@ paths:
           $ref: '#/definitions/models.EstadoContrato'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EstadoContrato'
         "403":
@@ -4597,11 +4455,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EstadoResolucion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - estado_resolucion
@@ -4633,7 +4489,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EstadoResolucion'
         "403":
@@ -4657,7 +4512,6 @@ paths:
           $ref: '#/definitions/models.EstadoResolucion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EstadoResolucion'
         "403":
@@ -4712,11 +4566,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EstadoSolicitudNecesidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - estado_solicitud_necesidad
@@ -4748,7 +4600,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EstadoSolicitudNecesidad'
         "403":
@@ -4772,7 +4623,6 @@ paths:
           $ref: '#/definitions/models.EstadoSolicitudNecesidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.EstadoSolicitudNecesidad'
         "403":
@@ -4827,11 +4677,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Evaluacion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - evaluacion
@@ -4863,7 +4711,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Evaluacion'
         "403":
@@ -4887,7 +4734,6 @@ paths:
           $ref: '#/definitions/models.Evaluacion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Evaluacion'
         "403":
@@ -4942,11 +4788,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.FuenteFinanciacionRubroNecesidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - fuente_financiacion_rubro_necesidad
@@ -4978,7 +4822,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.FuenteFinanciacionRubroNecesidad'
         "403":
@@ -5002,7 +4845,6 @@ paths:
           $ref: '#/definitions/models.FuenteFinanciacionRubroNecesidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.FuenteFinanciacionRubroNecesidad'
         "403":
@@ -5057,11 +4899,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.GrupoTipoContrato'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - grupo_tipo_contrato
@@ -5093,7 +4933,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.GrupoTipoContrato'
         "403":
@@ -5117,7 +4956,6 @@ paths:
           $ref: '#/definitions/models.GrupoTipoContrato'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.GrupoTipoContrato'
         "403":
@@ -5172,11 +5010,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionInterventor'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - informacion_interventor
@@ -5208,7 +5044,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionInterventor'
         "403":
@@ -5232,7 +5067,6 @@ paths:
           $ref: '#/definitions/models.InformacionInterventor'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionInterventor'
         "403":
@@ -5287,11 +5121,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionPersonaJuridica'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - informacion_persona_juridica
@@ -5323,7 +5155,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionPersonaJuridica'
         "403":
@@ -5347,7 +5178,6 @@ paths:
           $ref: '#/definitions/models.InformacionPersonaJuridica'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionPersonaJuridica'
         "403":
@@ -5402,11 +5232,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionPersonaNatural'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - informacion_persona_natural
@@ -5438,7 +5266,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionPersonaNatural'
         "403":
@@ -5462,7 +5289,6 @@ paths:
           $ref: '#/definitions/models.InformacionPersonaNatural'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionPersonaNatural'
         "403":
@@ -5517,11 +5343,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionProveedor'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - informacion_proveedor
@@ -5553,7 +5377,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionProveedor'
         "403":
@@ -5577,7 +5400,6 @@ paths:
           $ref: '#/definitions/models.InformacionProveedor'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionProveedor'
         "403":
@@ -5632,11 +5454,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionSociedadParticipante'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - informacion_sociedad_participante
@@ -5668,7 +5488,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionSociedadParticipante'
         "403":
@@ -5692,7 +5511,6 @@ paths:
           $ref: '#/definitions/models.InformacionSociedadParticipante'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionSociedadParticipante'
         "403":
@@ -5747,11 +5565,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionSociedadTemporal'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - informacion_sociedad_temporal
@@ -5783,7 +5599,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionSociedadTemporal'
         "403":
@@ -5807,7 +5622,6 @@ paths:
           $ref: '#/definitions/models.InformacionSociedadTemporal'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionSociedadTemporal'
         "403":
@@ -5862,11 +5676,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionSupervisor'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - informacion_supervisor
@@ -5898,7 +5710,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionSupervisor'
         "403":
@@ -5922,7 +5733,6 @@ paths:
           $ref: '#/definitions/models.InformacionSupervisor'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.InformacionSupervisor'
         "403":
@@ -5977,11 +5787,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Inhabilidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - inhabilidad
@@ -6013,7 +5821,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Inhabilidad'
         "403":
@@ -6037,7 +5844,6 @@ paths:
           $ref: '#/definitions/models.Inhabilidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Inhabilidad'
         "403":
@@ -6092,11 +5898,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.JefeDependenciaTemporal'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - jefe_dependencia_temporal
@@ -6128,7 +5932,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.JefeDependenciaTemporal'
         "403":
@@ -6152,7 +5955,6 @@ paths:
           $ref: '#/definitions/models.JefeDependenciaTemporal'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.JefeDependenciaTemporal'
         "403":
@@ -6207,11 +6009,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.LugarEjecucion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - lugar_ejecucion
@@ -6243,7 +6043,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.LugarEjecucion'
         "403":
@@ -6267,7 +6066,6 @@ paths:
           $ref: '#/definitions/models.LugarEjecucion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.LugarEjecucion'
         "403":
@@ -6322,11 +6120,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.MarcoLegal'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - marco_legal
@@ -6358,7 +6154,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.MarcoLegal'
         "403":
@@ -6382,7 +6177,6 @@ paths:
           $ref: '#/definitions/models.MarcoLegal'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.MarcoLegal'
         "403":
@@ -6437,11 +6231,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.MarcoLegalNecesidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - marco_legal_necesidad
@@ -6473,7 +6265,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.MarcoLegalNecesidad'
         "403":
@@ -6497,7 +6288,6 @@ paths:
           $ref: '#/definitions/models.MarcoLegalNecesidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.MarcoLegalNecesidad'
         "403":
@@ -6552,11 +6342,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ModalidadSeleccion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - modalidad_seleccion
@@ -6588,7 +6376,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ModalidadSeleccion'
         "403":
@@ -6612,7 +6399,6 @@ paths:
           $ref: '#/definitions/models.ModalidadSeleccion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ModalidadSeleccion'
         "403":
@@ -6667,11 +6453,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ModificacionContractual'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - modificacion_contractual
@@ -6703,7 +6487,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ModificacionContractual'
         "403":
@@ -6727,7 +6510,6 @@ paths:
           $ref: '#/definitions/models.ModificacionContractual'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ModificacionContractual'
         "403":
@@ -6782,11 +6564,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.NovedadContractual'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - novedad_contractual
@@ -6818,7 +6598,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.NovedadContractual'
         "403":
@@ -6842,7 +6621,6 @@ paths:
           $ref: '#/definitions/models.NovedadContractual'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.NovedadContractual'
         "403":
@@ -6897,11 +6675,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ObjetoContratar'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - objeto_contratar
@@ -6933,7 +6709,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ObjetoContratar'
         "403":
@@ -6957,7 +6732,6 @@ paths:
           $ref: '#/definitions/models.ObjetoContratar'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ObjetoContratar'
         "403":
@@ -7012,11 +6786,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ObjetoContratarActividadCiiu'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - objeto_contratar_actividad_ciiu
@@ -7048,7 +6820,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ObjetoContratarActividadCiiu'
         "403":
@@ -7072,7 +6843,6 @@ paths:
           $ref: '#/definitions/models.ObjetoContratarActividadCiiu'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ObjetoContratarActividadCiiu'
         "403":
@@ -7127,11 +6897,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ObjetoContratarNucleoBasico'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - objeto_contratar_nucleo_basico
@@ -7163,7 +6931,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ObjetoContratarNucleoBasico'
         "403":
@@ -7187,7 +6954,6 @@ paths:
           $ref: '#/definitions/models.ObjetoContratarNucleoBasico'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ObjetoContratarNucleoBasico'
         "403":
@@ -7242,11 +7008,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Orden'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - orden
@@ -7278,7 +7042,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Orden'
         "403":
@@ -7302,7 +7065,6 @@ paths:
           $ref: '#/definitions/models.Orden'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Orden'
         "403":
@@ -7357,11 +7119,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.OrdenadorGasto'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - ordenador_gasto
@@ -7393,7 +7153,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.OrdenadorGasto'
         "403":
@@ -7417,7 +7176,6 @@ paths:
           $ref: '#/definitions/models.OrdenadorGasto'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.OrdenadorGasto'
         "403":
@@ -7472,11 +7230,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.OrdenadorGastoTemporal'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - ordenador_gasto_temporal
@@ -7508,7 +7264,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.OrdenadorGastoTemporal'
         "403":
@@ -7532,7 +7287,6 @@ paths:
           $ref: '#/definitions/models.OrdenadorGastoTemporal'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.OrdenadorGastoTemporal'
         "403":
@@ -7587,11 +7341,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Ordenadores'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - ordenadores
@@ -7623,7 +7375,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Ordenadores'
         "403":
@@ -7647,7 +7398,6 @@ paths:
           $ref: '#/definitions/models.Ordenadores'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Ordenadores'
         "403":
@@ -7702,11 +7452,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroDependencia'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - parametro_dependencia
@@ -7738,7 +7486,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroDependencia'
         "403":
@@ -7762,7 +7509,6 @@ paths:
           $ref: '#/definitions/models.ParametroDependencia'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroDependencia'
         "403":
@@ -7817,11 +7563,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroEstandar'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - parametro_estandar
@@ -7853,7 +7597,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroEstandar'
         "403":
@@ -7877,7 +7620,6 @@ paths:
           $ref: '#/definitions/models.ParametroEstandar'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroEstandar'
         "403":
@@ -7932,11 +7674,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroNomenclaturaDian'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - parametro_nomenclatura_dian
@@ -7968,7 +7708,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroNomenclaturaDian'
         "403":
@@ -7992,7 +7731,6 @@ paths:
           $ref: '#/definitions/models.ParametroNomenclaturaDian'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroNomenclaturaDian'
         "403":
@@ -8047,11 +7785,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroTipoConformacion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - parametro_tipo_conformacion
@@ -8083,7 +7819,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroTipoConformacion'
         "403":
@@ -8107,7 +7842,6 @@ paths:
           $ref: '#/definitions/models.ParametroTipoConformacion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroTipoConformacion'
         "403":
@@ -8162,11 +7896,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroUnidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - parametro_unidad
@@ -8198,7 +7930,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroUnidad'
         "403":
@@ -8222,7 +7953,6 @@ paths:
           $ref: '#/definitions/models.ParametroUnidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ParametroUnidad'
         "403":
@@ -8277,11 +8007,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Parametros'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - parametros
@@ -8313,7 +8041,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Parametros'
         "403":
@@ -8337,7 +8064,6 @@ paths:
           $ref: '#/definitions/models.Parametros'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Parametros'
         "403":
@@ -8366,11 +8092,9 @@ paths:
       operationId: PersonaEscalafonController.Get All
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.PersonaEscalafon'
-        "403":
-          description: ""
+        "403": {}
   /persona_escalafonpersona_escalafon_postgrado/:
     get:
       tags:
@@ -8379,11 +8103,9 @@ paths:
       operationId: PersonaEscalafonController.Get All Postgrado
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.PersonaEscalafon'
-        "403":
-          description: ""
+        "403": {}
   /persona_escalafonpersona_escalafon_pregrado/:
     get:
       tags:
@@ -8392,11 +8114,9 @@ paths:
       operationId: PersonaEscalafonController.Get All Pregrado
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.PersonaEscalafon'
-        "403":
-          description: ""
+        "403": {}
   /plantilla_minuta/:
     get:
       tags:
@@ -8431,11 +8151,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.PlantillaMinuta'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - plantilla_minuta
@@ -8467,7 +8185,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.PlantillaMinuta'
         "403":
@@ -8491,7 +8208,6 @@ paths:
           $ref: '#/definitions/models.PlantillaMinuta'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.PlantillaMinuta'
         "403":
@@ -8546,11 +8262,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Poliza'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - poliza
@@ -8582,7 +8296,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Poliza'
         "403":
@@ -8606,7 +8319,6 @@ paths:
           $ref: '#/definitions/models.Poliza'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Poliza'
         "403":
@@ -8641,11 +8353,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Precontratado'
-        "403":
-          description: ""
+        "403": {}
   /precontratado/{idResolucion}/{idPersona}:
     get:
       tags:
@@ -8665,7 +8375,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Precontratado'
         "403":
@@ -8684,11 +8393,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Precontratado'
-        "403":
-          description: ""
+        "403": {}
   /proveedor_actividad_ciiu/:
     get:
       tags:
@@ -8723,11 +8430,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ProveedorActividadCiiu'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - proveedor_actividad_ciiu
@@ -8759,7 +8464,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ProveedorActividadCiiu'
         "403":
@@ -8783,7 +8487,6 @@ paths:
           $ref: '#/definitions/models.ProveedorActividadCiiu'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ProveedorActividadCiiu'
         "403":
@@ -8874,11 +8577,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ProveedorRepresentanteLegal'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - proveedor_representante_legal
@@ -8910,7 +8611,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ProveedorRepresentanteLegal'
         "403":
@@ -8934,7 +8634,6 @@ paths:
           $ref: '#/definitions/models.ProveedorRepresentanteLegal'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ProveedorRepresentanteLegal'
         "403":
@@ -8989,11 +8688,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ProveedorTelefono'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - proveedor_telefono
@@ -9025,7 +8722,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ProveedorTelefono'
         "403":
@@ -9049,7 +8745,6 @@ paths:
           $ref: '#/definitions/models.ProveedorTelefono'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ProveedorTelefono'
         "403":
@@ -9104,11 +8799,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.PucTemporal'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - puc_temporal
@@ -9140,7 +8833,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.PucTemporal'
         "403":
@@ -9164,7 +8856,6 @@ paths:
           $ref: '#/definitions/models.PucTemporal'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.PucTemporal'
         "403":
@@ -9219,11 +8910,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Reduccion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - reduccion
@@ -9255,7 +8944,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Reduccion'
         "403":
@@ -9279,7 +8967,6 @@ paths:
           $ref: '#/definitions/models.Reduccion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Reduccion'
         "403":
@@ -9334,11 +9021,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RegistroPresupuestalDisponibilidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - registro_presupuestal_disponibilidad
@@ -9370,7 +9055,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RegistroPresupuestalDisponibilidad'
         "403":
@@ -9394,7 +9078,6 @@ paths:
           $ref: '#/definitions/models.RegistroPresupuestalDisponibilidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RegistroPresupuestalDisponibilidad'
         "403":
@@ -9449,11 +9132,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RelacionParametro'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - relacion_parametro
@@ -9485,7 +9166,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RelacionParametro'
         "403":
@@ -9509,7 +9189,6 @@ paths:
           $ref: '#/definitions/models.RelacionParametro'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RelacionParametro'
         "403":
@@ -9564,11 +9243,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RequisitoMinimo'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - requisito_minimo
@@ -9600,7 +9277,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RequisitoMinimo'
         "403":
@@ -9624,7 +9300,6 @@ paths:
           $ref: '#/definitions/models.RequisitoMinimo'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RequisitoMinimo'
         "403":
@@ -9679,11 +9354,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Resolucion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - resolucion
@@ -9715,7 +9388,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Resolucion'
         "403":
@@ -9739,7 +9411,6 @@ paths:
           $ref: '#/definitions/models.Resolucion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Resolucion'
         "403":
@@ -9774,7 +9445,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Resolucion'
         "403":
@@ -9804,7 +9474,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Resolucion'
         "403":
@@ -9879,11 +9548,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ResolucionEstado'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - resolucion_estado
@@ -9915,7 +9582,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ResolucionEstado'
         "403":
@@ -9939,7 +9605,6 @@ paths:
           $ref: '#/definitions/models.ResolucionEstado'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ResolucionEstado'
         "403":
@@ -9994,11 +9659,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ResolucionVinculacionDocente'
-        "403":
-          description: ""
+        "403": {}
   /resolucion_vinculacion_docente/:
     get:
       tags:
@@ -10033,11 +9696,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ResolucionVinculacionDocente'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - resolucion_vinculacion_docente
@@ -10069,7 +9730,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ResolucionVinculacionDocente'
         "403":
@@ -10093,7 +9753,6 @@ paths:
           $ref: '#/definitions/models.ResolucionVinculacionDocente'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ResolucionVinculacionDocente'
         "403":
@@ -10148,11 +9807,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RubroSolicitudNecesidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - rubro_solicitud_necesidad
@@ -10184,7 +9841,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RubroSolicitudNecesidad'
         "403":
@@ -10208,7 +9864,6 @@ paths:
           $ref: '#/definitions/models.RubroSolicitudNecesidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.RubroSolicitudNecesidad'
         "403":
@@ -10263,11 +9918,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SedesSIC'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - sedes_SIC
@@ -10299,7 +9952,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SedesSIC'
         "403":
@@ -10323,7 +9975,6 @@ paths:
           $ref: '#/definitions/models.SedesSIC'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SedesSIC'
         "403":
@@ -10378,11 +10029,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Servicio'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - servicio
@@ -10414,7 +10063,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Servicio'
         "403":
@@ -10438,7 +10086,6 @@ paths:
           $ref: '#/definitions/models.Servicio'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Servicio'
         "403":
@@ -10493,11 +10140,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ServicioContrato'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - servicio_contrato
@@ -10529,7 +10174,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ServicioContrato'
         "403":
@@ -10553,7 +10197,6 @@ paths:
           $ref: '#/definitions/models.ServicioContrato'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.ServicioContrato'
         "403":
@@ -10608,11 +10251,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudCotizacion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - solicitud_cotizacion
@@ -10644,7 +10285,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudCotizacion'
         "403":
@@ -10668,7 +10308,6 @@ paths:
           $ref: '#/definitions/models.SolicitudCotizacion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudCotizacion'
         "403":
@@ -10723,11 +10362,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudDisponibilidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - solicitud_disponibilidad
@@ -10759,7 +10396,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudDisponibilidad'
         "403":
@@ -10783,7 +10419,6 @@ paths:
           $ref: '#/definitions/models.SolicitudDisponibilidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudDisponibilidad'
         "403":
@@ -10838,11 +10473,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudNecesidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - solicitud_necesidad
@@ -10874,7 +10507,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudNecesidad'
         "403":
@@ -10898,7 +10530,6 @@ paths:
           $ref: '#/definitions/models.SolicitudNecesidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudNecesidad'
         "403":
@@ -10953,11 +10584,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudRp'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - solicitud_rp
@@ -10989,7 +10618,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudRp'
         "403":
@@ -11013,7 +10641,6 @@ paths:
           $ref: '#/definitions/models.SolicitudRp'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SolicitudRp'
         "403":
@@ -11068,11 +10695,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SupervisorContrato'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - supervisor_contrato
@@ -11104,7 +10729,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SupervisorContrato'
         "403":
@@ -11128,7 +10752,6 @@ paths:
           $ref: '#/definitions/models.SupervisorContrato'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SupervisorContrato'
         "403":
@@ -11183,11 +10806,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SupervisorSolicitudNecesidad'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - supervisor_solicitud_necesidad
@@ -11219,7 +10840,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SupervisorSolicitudNecesidad'
         "403":
@@ -11243,7 +10863,6 @@ paths:
           $ref: '#/definitions/models.SupervisorSolicitudNecesidad'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.SupervisorSolicitudNecesidad'
         "403":
@@ -11298,11 +10917,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Suspension'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - suspension
@@ -11334,7 +10951,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Suspension'
         "403":
@@ -11358,7 +10974,6 @@ paths:
           $ref: '#/definitions/models.Suspension'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Suspension'
         "403":
@@ -11413,11 +11028,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Telefono'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - telefono
@@ -11449,7 +11062,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Telefono'
         "403":
@@ -11473,7 +11085,6 @@ paths:
           $ref: '#/definitions/models.Telefono'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.Telefono'
         "403":
@@ -11528,11 +11139,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TerminacionAnticipada'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - terminacion_anticipada
@@ -11564,7 +11173,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TerminacionAnticipada'
         "403":
@@ -11588,7 +11196,6 @@ paths:
           $ref: '#/definitions/models.TerminacionAnticipada'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TerminacionAnticipada'
         "403":
@@ -11643,11 +11250,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TipoContratacion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - tipo_contratacion
@@ -11679,7 +11284,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TipoContratacion'
         "403":
@@ -11703,7 +11307,6 @@ paths:
           $ref: '#/definitions/models.TipoContratacion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TipoContratacion'
         "403":
@@ -11758,11 +11361,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TipoContrato'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - tipo_contrato
@@ -11794,7 +11395,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TipoContrato'
         "403":
@@ -11818,7 +11418,6 @@ paths:
           $ref: '#/definitions/models.TipoContrato'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TipoContrato'
         "403":
@@ -11873,11 +11472,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TipoResolucion'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - tipo_resolucion
@@ -11909,7 +11506,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TipoResolucion'
         "403":
@@ -11933,7 +11529,6 @@ paths:
           $ref: '#/definitions/models.TipoResolucion'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.TipoResolucion'
         "403":
@@ -11988,11 +11583,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.UnidadEjecutora'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - unidad_ejecutora
@@ -12024,7 +11617,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.UnidadEjecutora'
         "403":
@@ -12048,7 +11640,6 @@ paths:
           $ref: '#/definitions/models.UnidadEjecutora'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.UnidadEjecutora'
         "403":
@@ -12121,11 +11712,9 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.VinculacionDocente'
-        "403":
-          description: ""
+        "403": {}
     post:
       tags:
       - vinculacion_docente
@@ -12157,7 +11746,6 @@ paths:
         type: string
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.VinculacionDocente'
         "403":
@@ -12181,7 +11769,6 @@ paths:
           $ref: '#/definitions/models.VinculacionDocente'
       responses:
         "200":
-          description: ""
           schema:
             $ref: '#/definitions/models.VinculacionDocente'
         "403":
@@ -12668,6 +12255,10 @@ definitions:
       Contratista:
         type: integer
         format: int64
+      ContratoSuscrito:
+        type: array
+        items:
+          $ref: '#/definitions/models.ContratoSuscrito'
       Convenio:
         type: string
       DependenciaSolicitante:
@@ -12810,7 +12401,7 @@ definitions:
         type: integer
         format: int64
       NumeroContrato:
-        type: string
+        $ref: '#/definitions/models.ContratoGeneral'
       NumeroContratoSuscrito:
         type: string
       Usuario:

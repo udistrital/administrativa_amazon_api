@@ -21,7 +21,7 @@ type ContratoGeneral struct {
 	ClausulaRegistroPresupuestal bool                `orm:"column(clausula_registro_presupuestal);null"`
 	SedeSolicitante              string              `orm:"column(sede_solicitante);null"`
 	DependenciaSolicitante       string              `orm:"column(dependencia_solicitante);null"`
-	Contratista                  int         `orm:"column(contratista)"`
+	Contratista                  int                 `orm:"column(contratista)"`
 	ValorContrato                float64             `orm:"column(valor_contrato)"`
 	Justificacion                string              `orm:"column(justificacion)"`
 	DescripcionFormaPago         string              `orm:"column(descripcion_forma_pago)"`
@@ -164,6 +164,7 @@ func AddContratosVinculcionEspecial(m ExpedicionResolucion) (alerta []string, er
 						ai.Descripcion = acta.Descripcion
 						ai.FechaInicio = acta.FechaInicio
 						ai.FechaFin = acta.FechaFin
+						ai.FechaFin = CalcularFechaFin(acta.FechaInicio, a.NumeroSemanas)
 						if _, err = o.Insert(&ai); err != nil {
 							o.Rollback()
 							alerta[0] = "error"
@@ -403,4 +404,34 @@ func DeleteContratoGeneral(id string) (err error) {
 		}
 	}
 	return
+}
+
+func CalcularFechaFin(fecha_inicio time.Time, numero_semanas int) (fecha_fin time.Time) {
+
+	semanas := float32(numero_semanas)
+	meses := semanas / 4
+	fmt.Println("meses", meses)
+	numero_dias := (meses * 30) + 1
+	f_i := fecha_inicio
+	after := f_i.AddDate(0, 0, int(numero_dias))
+	fmt.Println(after)
+	return after
+
+}
+
+func GetMaximoDVE() (consecutivo int) {
+	o := orm.NewOrm()
+	var temp []int
+	vigencia, _, _ := time.Now().Date()
+	fmt.Println("Vigencia getmaximodve: ", vigencia)
+	_, err := o.Raw("SELECT COALESCE(MAX(substring(numero_contrato,4)::INTEGER), 0) total FROM argo.contrato_general WHERE numero_contrato LIKE 'DVE%' AND vigencia=" + strconv.Itoa(vigencia) + ";").QueryRows(&temp)
+
+	if err == nil {
+		fmt.Println("Consulta exitosaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+	} /*else {
+		fmt.Println("Soy el errrrrorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr de DVE", err)
+	}*/
+
+	fmt.Println(temp[0])
+	return temp[0]
 }
