@@ -11,7 +11,7 @@ import (
 )
 
 type ContratoCancelado struct {
-	Id                int       `orm:"column(consecutivo_contrato_cancelado);pk"`
+	Id                int       `orm:"column(consecutivo_contrato_cancelado);pk;auto"`
 	NumeroContrato    string    `orm:"column(numero_contrato)"`
 	Vigencia          int       `orm:"column(vigencia)"`
 	FechaCancelacion  time.Time `orm:"column(fecha_cancelacion);type(date)"`
