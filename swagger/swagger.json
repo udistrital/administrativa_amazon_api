@@ -17486,6 +17486,174 @@
                 }
             }
         },
+        "/unidad/": {
+            "get": {
+                "tags": [
+                    "unidad"
+                ],
+                "description": "get Unidad",
+                "operationId": "UnidadController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.Unidad"
+                        }
+                    },
+                    "403": {}
+                }
+            },
+            "post": {
+                "tags": [
+                    "unidad"
+                ],
+                "description": "create Unidad",
+                "operationId": "UnidadController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Unidad content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Unidad"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Unidad"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/unidad/{id}": {
+            "get": {
+                "tags": [
+                    "unidad"
+                ],
+                "description": "get Unidad by id",
+                "operationId": "UnidadController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.Unidad"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "unidad"
+                ],
+                "description": "update the Unidad",
+                "operationId": "UnidadController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Unidad content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Unidad"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "schema": {
+                            "$ref": "#/definitions/models.Unidad"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "unidad"
+                ],
+                "description": "delete the Unidad",
+                "operationId": "UnidadController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
         "/unidad_ejecutora/": {
             "get": {
                 "tags": [
@@ -21079,6 +21247,28 @@
                 }
             }
         },
+        "models.Unidad": {
+            "title": "Unidad",
+            "type": "object",
+            "properties": {
+                "Descripcion": {
+                    "type": "string"
+                },
+                "Estado": {
+                    "type": "boolean"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Tipo": {
+                    "type": "string"
+                },
+                "Unidad": {
+                    "type": "string"
+                }
+            }
+        },
         "models.UnidadEjecutora": {
             "title": "UnidadEjecutora",
             "type": "object",
@@ -21264,6 +21454,10 @@
         {
             "name": "proveedor_telefono",
             "description": "ProveedorTelefonoController operations for ProveedorTelefono\n"
+        },
+        {
+            "name": "unidad",
+            "description": "UnidadController operations for Unidad\n"
         },
         {
             "name": "informacion_persona_juridica",

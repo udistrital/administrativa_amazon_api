@@ -178,6 +178,12 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/unidad",
+			beego.NSInclude(
+				&controllers.UnidadController{},
+			),
+		),
+
 		beego.NSNamespace("/informacion_persona_juridica",
 			beego.NSInclude(
 				&controllers.InformacionPersonaJuridicaController{},
@@ -633,7 +639,7 @@ func init() {
 				&controllers.ResolucionCompletaController{},
 			),
 		),
-		
+
 		beego.NSNamespace("/persona_escalafon",
 			beego.NSInclude(
 				&controllers.PersonaEscalafonController{},
