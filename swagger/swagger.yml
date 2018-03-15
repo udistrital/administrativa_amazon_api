@@ -14051,6 +14051,8 @@ definitions:
     properties:
       Cargo:
         type: string
+      CargoId:
+        $ref: '#/definitions/models.CargoSupervisorTemporal'
       DependenciaSupervisor:
         type: string
       DigitoVerificacion:
@@ -14061,6 +14063,12 @@ definitions:
         format: int64
       Estado:
         type: boolean
+      FechaFin:
+        type: string
+        format: string
+      FechaInicio:
+        type: string
+        format: string
       Id:
         type: integer
         format: int64

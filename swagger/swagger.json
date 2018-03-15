@@ -21081,6 +21081,9 @@
                 "Cargo": {
                     "type": "string"
                 },
+                "CargoId": {
+                    "$ref": "#/definitions/models.CargoSupervisorTemporal"
+                },
                 "DependenciaSupervisor": {
                     "type": "string"
                 },
@@ -21094,6 +21097,14 @@
                 },
                 "Estado": {
                     "type": "boolean"
+                },
+                "FechaFin": {
+                    "type": "string",
+                    "format": "string"
+                },
+                "FechaInicio": {
+                    "type": "string",
+                    "format": "string"
                 },
                 "Id": {
                     "type": "integer",
