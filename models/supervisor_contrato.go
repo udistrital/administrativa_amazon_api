@@ -5,20 +5,24 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type SupervisorContrato struct {
-	Id                    int    `orm:"column(id);pk"`
-	Nombre                string `orm:"column(nombre)"`
-	Documento             int    `orm:"column(documento)"`
-	Cargo                 string `orm:"column(cargo)"`
-	SedeSupervisor        string `orm:"column(sede_supervisor);null"`
-	DependenciaSupervisor string `orm:"column(dependencia_supervisor);null"`
-	Tipo                  int    `orm:"column(tipo);null"`
-	Estado                bool   `orm:"column(estado);null"`
-	DigitoVerificacion    int    `orm:"column(digito_verificacion);null"`
+	Id                    int                      `orm:"column(id);pk"`
+	Nombre                string                   `orm:"column(nombre)"`
+	Documento             int                      `orm:"column(documento)"`
+	Cargo                 string                   `orm:"column(cargo)"`
+	SedeSupervisor        string                   `orm:"column(sede_supervisor);null"`
+	DependenciaSupervisor string                   `orm:"column(dependencia_supervisor);null"`
+	Tipo                  int                      `orm:"column(tipo);null"`
+	Estado                bool                     `orm:"column(estado);null"`
+	DigitoVerificacion    int                      `orm:"column(digito_verificacion);null"`
+	FechaInicio           time.Time                `orm:"column(fecha_inicio);null"`
+	FechaFin              time.Time                `orm:"column(fecha_fin);null"`
+	CargoId               *CargoSupervisorTemporal `orm:"column(cargo_id);rel(fk)"`
 }
 
 func (t *SupervisorContrato) TableName() string {
@@ -53,13 +57,20 @@ func GetSupervisorContratoById(id int) (v *SupervisorContrato, err error) {
 func GetAllSupervisorContrato(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(SupervisorContrato))
+	qs := o.QueryTable(new(SupervisorContrato)).RelatedSel(5)
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
 		k = strings.Replace(k, ".", "__", -1)
 		if strings.Contains(k, "isnull") {
 			qs = qs.Filter(k, (v == "true" || v == "1"))
+		} else if strings.Contains(k, "__startswith") {
+			cond := orm.NewCondition()
+			arr := strings.Split(v, "|")
+			for i := range arr {
+				cond = cond.Or(k, arr[i])
+			}
+			qs = qs.SetCond(cond)
 		} else {
 			qs = qs.Filter(k, v)
 		}
