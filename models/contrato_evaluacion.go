@@ -15,7 +15,7 @@ type ContratoEvaluacion struct {
 	NumeroContrato     float64   `orm:"column(numero_contrato)"`
 	Vigencia           float64   `orm:"column(vigencia)"`
 	DocumentoEvaluador float64   `orm:"column(documento_evaluador)"`
-	FechaRegistro      time.Time `orm:"column(fecha_registro);type(date)"`
+	FechaRegistro      time.Time `orm:"column(fecha_registro);type(date);auto_now"`
 	NumeroNecesidad    float64   `orm:"column(numero_necesidad)"`
 	Estado             string    `orm:"column(estado);null"`
 	UnidadEjecutora    float64   `orm:"column(unidad_ejecutora)"`

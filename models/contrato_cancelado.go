@@ -14,10 +14,10 @@ type ContratoCancelado struct {
 	Id                int       `orm:"column(consecutivo_contrato_cancelado);pk;auto"`
 	NumeroContrato    string    `orm:"column(numero_contrato)"`
 	Vigencia          int       `orm:"column(vigencia)"`
-	FechaCancelacion  time.Time `orm:"column(fecha_cancelacion);type(date)"`
+	FechaCancelacion  time.Time `orm:"column(fecha_cancelacion);type(date);auto_now"`
 	MotivoCancelacion string    `orm:"column(motivo_cancelacion)"`
 	Usuario           string    `orm:"column(usuario)"`
-	FechaRegistro     time.Time `orm:"column(fecha_registro);type(date)"`
+	FechaRegistro     time.Time `orm:"column(fecha_registro);type(date);auto_now"`
 	Estado            bool      `orm:"column(estado)"`
 }
 

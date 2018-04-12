@@ -12,9 +12,9 @@ import (
 
 type Suspension struct {
 	Id               int                 `orm:"column(id);pk"`
-	FechaInicio      time.Time           `orm:"column(fecha_inicio);type(date)"`
-	FechaFin         time.Time           `orm:"column(fecha_fin);type(date);null"`
-	FechaReanudacion time.Time           `orm:"column(fecha_reanudacion);type(date);null"`
+	FechaInicio      time.Time           `orm:"column(fecha_inicio);type(date);auto_now"`
+	FechaFin         time.Time           `orm:"column(fecha_fin);type(date);null;auto_now"`
+	FechaReanudacion time.Time           `orm:"column(fecha_reanudacion);type(date);null;auto_now"`
 	Estado           bool                `orm:"column(estado);null"`
 	IdReanudacion    *NovedadContractual `orm:"column(id_reanudacion);rel(fk)"`
 }

@@ -14,7 +14,7 @@ type SolicitudDisponibilidad struct {
 	Id             int                 `orm:"column(id);pk"`
 	Numero         int                 `orm:"column(numero)"`
 	Vigencia       float64             `orm:"column(vigencia)"`
-	FechaSolicitud time.Time           `orm:"column(fecha_solicitud);type(date)"`
+	FechaSolicitud time.Time           `orm:"column(fecha_solicitud);type(date);auto_now"`
 	Necesidad      *SolicitudNecesidad `orm:"column(necesidad);rel(fk)"`
 }
 

@@ -12,7 +12,7 @@ import (
 
 type ElementoActaRecibido struct {
 	Id                int       `orm:"column(id_elemento_ac);pk"`
-	FechaRegistro     time.Time `orm:"column(fecha_registro);type(date);null"`
+	FechaRegistro     time.Time `orm:"column(fecha_registro);type(date);null;auto_now"`
 	Nivel             int       `orm:"column(nivel);null"`
 	TipoBien          int       `orm:"column(tipo_bien);null"`
 	Descripcion       string    `orm:"column(descripcion);null"`
@@ -24,8 +24,8 @@ type ElementoActaRecibido struct {
 	TotalIva          float64   `orm:"column(total_iva);null"`
 	TotalIvaCon       float64   `orm:"column(total_iva_con);null"`
 	TipoPoliza        int       `orm:"column(tipo_poliza);null"`
-	FechaInicioPol    time.Time `orm:"column(fecha_inicio_pol);type(date);null"`
-	FechaFinalPol     time.Time `orm:"column(fecha_final_pol);type(date);null"`
+	FechaInicioPol    time.Time `orm:"column(fecha_inicio_pol);type(date);null;auto_now"`
+	FechaFinalPol     time.Time `orm:"column(fecha_final_pol);type(date);null;auto_now"`
 	Marca             string    `orm:"column(marca);null"`
 	Serie             string    `orm:"column(serie);null"`
 	IdActa            int       `orm:"column(id_acta);null"`

@@ -15,8 +15,8 @@ type Ordenadores struct {
 	IdOrdenador     int       `orm:"column(id_ordenador);null"`
 	InfoResolucion  string    `orm:"column(info_resolucion);null"`
 	IdCiudad        int       `orm:"column(id_ciudad);null"`
-	FechaInicio     time.Time `orm:"column(fecha_inicio);type(date);null"`
-	FechaFin        time.Time `orm:"column(fecha_fin);type(date);null"`
+	FechaInicio     time.Time `orm:"column(fecha_inicio);type(date);null;auto_now"`
+	FechaFin        time.Time `orm:"column(fecha_fin);type(date);null;auto_now"`
 	Estado          bool      `orm:"column(estado);null"`
 	Documento       int       `orm:"column(documento);null"`
 	NombreOrdenador string    `orm:"column(nombre_ordenador);null"`
