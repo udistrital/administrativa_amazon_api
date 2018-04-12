@@ -14,7 +14,7 @@ type SupervisorSolicitudNecesidad struct {
 	Id                 int                 `orm:"column(id);pk"`
 	SolicitudNecesidad *SolicitudNecesidad `orm:"column(solicitud_necesidad);rel(fk)"`
 	Funcionario        int                 `orm:"column(funcionario)"`
-	FechaAsginacion    time.Time           `orm:"column(fecha_asginacion);type(date)"`
+	FechaAsginacion    time.Time           `orm:"column(fecha_asginacion);type(date);auto_now"`
 	Estado             string              `orm:"column(estado)"`
 }
 

@@ -14,9 +14,9 @@ type ContratoLiquidado struct {
 	Id               int       `orm:"column(id);pk"`
 	NumeroContrato   string    `orm:"column(numero_contrato)"`
 	Vigencia         int       `orm:"column(vigencia)"`
-	FechaRegistro    time.Time `orm:"column(fecha_registro);type(date)"`
+	FechaRegistro    time.Time `orm:"column(fecha_registro);type(date);auto_now"`
 	Usuario          string    `orm:"column(usuario)"`
-	FechaLiquidacion time.Time `orm:"column(fecha_liquidacion);type(date)"`
+	FechaLiquidacion time.Time `orm:"column(fecha_liquidacion);type(date);auto_now"`
 	NumeroActo       string    `orm:"column(numero_acto)"`
 	Observaciones    string    `orm:"column(observaciones)"`
 	Documento        string    `orm:"column(documento)"`

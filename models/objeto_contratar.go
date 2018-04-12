@@ -14,11 +14,11 @@ type ObjetoContratar struct {
 	Id                       int              `orm:"column(id_objeto);pk"`
 	NumeroSolicitud          float64          `orm:"column(numero_solicitud)"`
 	Vigencia                 float64          `orm:"column(vigencia)"`
-	Fecharegistro            time.Time        `orm:"column(fecharegistro);type(date)"`
+	Fecharegistro            time.Time        `orm:"column(fecharegistro);type(date);auto_now"`
 	IdUnidad                 *ParametroUnidad `orm:"column(id_unidad);rel(fk)"`
 	Cantidad                 float64          `orm:"column(cantidad)"`
 	NumeroCotizaciones       float64          `orm:"column(numero_cotizaciones);null"`
-	Fechasolicitudcotizacion time.Time        `orm:"column(fechasolicitudcotizacion);type(date);null"`
+	Fechasolicitudcotizacion time.Time        `orm:"column(fechasolicitudcotizacion);type(date);null;auto_now"`
 	Estado                   string           `orm:"column(estado);null"`
 	UnidadEjecutora          float64          `orm:"column(unidad_ejecutora)"`
 	TipoNecesidad            string           `orm:"column(tipo_necesidad)"`

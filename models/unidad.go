@@ -13,7 +13,7 @@ type Unidad struct {
 	Id          int    `orm:"column(id);pk;auto"`
 	Unidad      string `orm:"column(unidad)"`
 	Tipo        string `orm:"column(tipo)"`
-	Descripcion string `orm:"column(descripcion):null"`
+	Descripcion string `orm:"column(descripcion);null"`
 	Estado      bool   `orm:"column(estado)"`
 }
 

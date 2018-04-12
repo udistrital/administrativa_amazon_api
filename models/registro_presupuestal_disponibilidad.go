@@ -14,7 +14,7 @@ type RegistroPresupuestalDisponibilidad struct {
 	Id                       int                     `orm:"column(id);pk"`
 	IdDisponibilidadContrato *ContratoDisponibilidad `orm:"column(id_disponibilidad_contrato);rel(fk)"`
 	Estado                   bool                    `orm:"column(estado);null"`
-	FechaRegistro            time.Time               `orm:"column(fecha_registro);type(date);null"`
+	FechaRegistro            time.Time               `orm:"column(fecha_registro);type(date);null;auto_now"`
 	RegistroPresupuestal     int                     `orm:"column(registro_presupuestal);null"`
 	VigenciaRp               int                     `orm:"column(vigencia_rp);null"`
 }

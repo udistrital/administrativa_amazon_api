@@ -13,7 +13,7 @@ import (
 type CambioSupervisor struct {
 	Id                int       `orm:"column(id);pk"`
 	TipoCambio        int       `orm:"column(tipo_cambio);null"`
-	FechaCambio       time.Time `orm:"column(fecha_cambio);type(date);null"`
+	FechaCambio       time.Time `orm:"column(fecha_cambio);type(date);null;auto_now"`
 	SupervisorAntiguo int       `orm:"column(supervisor_antiguo);null"`
 	SupervisorNuevo   int       `orm:"column(supervisor_nuevo);null"`
 }

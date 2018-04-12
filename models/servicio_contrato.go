@@ -14,7 +14,7 @@ type ServicioContrato struct {
 	Id             int       `orm:"column(id);pk"`
 	Descripcion    string    `orm:"column(descripcion);null"`
 	Nombre         string    `orm:"column(nombre);null"`
-	FechaRegistro  time.Time `orm:"column(fecha_registro);type(date);null"`
+	FechaRegistro  time.Time `orm:"column(fecha_registro);type(date);null;auto_now"`
 	NumeroContrato string    `orm:"column(numero_contrato);null"`
 	Vigencia       int       `orm:"column(vigencia);null"`
 	CodigoCiiu     string    `orm:"column(codigo_ciiu);null"`

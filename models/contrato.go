@@ -15,7 +15,7 @@ type Contrato struct {
 	Vigencia         int       `orm:"column(vigencia)"`
 	NumeroContrato   string    `orm:"column(numero_contrato)"`
 	EstadoRegistro   bool      `orm:"column(estado_registro)"`
-	FechaRegistro    time.Time `orm:"column(fecha_registro);type(date)"`
+	FechaRegistro    time.Time `orm:"column(fecha_registro);type(date);auto_now"`
 	NumeroConvenio   int       `orm:"column(numero_convenio);null"`
 	VigenciaConvenio int       `orm:"column(vigencia_convenio);null"`
 	Perfil           string    `orm:"column(perfil);null"`

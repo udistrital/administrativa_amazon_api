@@ -14,9 +14,9 @@ type ContratoSuscrito struct {
 	Id                     int              `orm:"column(consecutivo_contrato_suscrito);pk"`
 	NumeroContrato         *ContratoGeneral `orm:"column(numero_contrato);rel(fk)"`
 	Vigencia               int              `orm:"column(vigencia);null"`
-	FechaRegistro          time.Time        `orm:"column(fecha_registro);type(date);null"`
+	FechaRegistro          time.Time        `orm:"column(fecha_registro);type(date);null;auto_now"`
 	Usuario                string           `orm:"column(usuario);null"`
-	FechaSuscripcion       time.Time        `orm:"column(fecha_suscripcion);type(date);null"`
+	FechaSuscripcion       time.Time        `orm:"column(fecha_suscripcion);type(date);null;auto_now"`
 	NumeroContratoSuscrito string           `orm:"column(numero_contrato_suscrito);null"`
 }
 

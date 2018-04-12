@@ -19,8 +19,8 @@ type Convenio struct {
 	OBJETO        string    `orm:"column(OBJETO);null"`
 	ENTIDAD       string    `orm:"column(ENTIDAD);null"`
 	CODIGOTESORAL int64     `orm:"column(CODIGO_TESORAL);null"`
-	FECHAINICIO   time.Time `orm:"column(FECHA_INICIO);type(date);null"`
-	FECHAFINAL    time.Time `orm:"column(FECHA_FINAL);type(date);null"`
+	FECHAINICIO   time.Time `orm:"column(FECHA_INICIO);type(date);null;auto_now"`
+	FECHAFINAL    time.Time `orm:"column(FECHA_FINAL);type(date);null;auto_now"`
 	SITUACION     string    `orm:"column(SITUACION);null"`
 	UNIDAD        string    `orm:"column(UNIDAD);null"`
 	ESTADO        string    `orm:"column(ESTADO);null"`

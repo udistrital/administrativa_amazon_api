@@ -20,8 +20,8 @@ type SupervisorContrato struct {
 	Tipo                  int                      `orm:"column(tipo);null"`
 	Estado                bool                     `orm:"column(estado);null"`
 	DigitoVerificacion    int                      `orm:"column(digito_verificacion);null"`
-	FechaInicio           time.Time                `orm:"column(fecha_inicio);null"`
-	FechaFin              time.Time                `orm:"column(fecha_fin);null"`
+	FechaInicio           time.Time                `orm:"column(fecha_inicio);null;auto_now"`
+	FechaFin              time.Time                `orm:"column(fecha_fin);null;auto_now"`
 	CargoId               *CargoSupervisorTemporal `orm:"column(cargo_id);rel(fk)"`
 }
 
