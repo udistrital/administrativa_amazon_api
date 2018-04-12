@@ -20,7 +20,7 @@ type DependenciaSIC struct {
 	Barrio          string    `orm:"column(barrio);null"`
 	Direccion       string    `orm:"column(direccion);null"`
 	EstadoRegistro  bool      `orm:"column(estado_registro)"`
-	FechaRegistro   time.Time `orm:"column(fecha_registro);type(date);null;auto_now"`
+	FechaRegistro   time.Time `orm:"column(fecha_registro);type(date);null"`
 	Id              int       `orm:"column(id_dependencia);pk"`
 }
 

@@ -12,7 +12,7 @@ import (
 
 type TerminacionAnticipada struct {
 	Id    int       `orm:"column(id);pk"`
-	Fecha time.Time `orm:"column(fecha);type(date);auto_now"`
+	Fecha time.Time `orm:"column(fecha);type(date)"`
 }
 
 func (t *TerminacionAnticipada) TableName() string {

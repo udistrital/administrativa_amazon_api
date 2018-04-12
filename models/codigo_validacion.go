@@ -14,7 +14,7 @@ type CodigoValidacion struct {
 	Id                int       `orm:"column(id_codigo_validacion);pk"`
 	IdTabla           float64   `orm:"column(id_tabla)"`
 	TipoCertificacion float64   `orm:"column(tipo_certificacion)"`
-	Fecha             time.Time `orm:"column(fecha);type(timestamp without time zone);auto_now"`
+	Fecha             time.Time `orm:"column(fecha);type(timestamp without time zone)"`
 }
 
 func (t *CodigoValidacion) TableName() string {

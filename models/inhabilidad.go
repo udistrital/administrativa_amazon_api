@@ -15,7 +15,7 @@ type Inhabilidad struct {
 	IdProveedor       *InformacionProveedor `orm:"column(id_proveedor);rel(fk)"`
 	TipoInhabilidad   string                `orm:"column(tipo_inhabilidad)"`
 	TiempoInhabilidad string                `orm:"column(tiempo_inhabilidad)"`
-	FechaInhabilidad  time.Time             `orm:"column(fecha_inhabilidad);type(date);auto_now"`
+	FechaInhabilidad  time.Time             `orm:"column(fecha_inhabilidad);type(date)"`
 	Descripcion       string                `orm:"column(descripcion)"`
 	AnexoSoporte      string                `orm:"column(anexo_soporte);null"`
 }

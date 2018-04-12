@@ -50,7 +50,7 @@ type InformacionPersonaNatural struct {
 	IdEps                             int                `orm:"column(id_eps);null"`
 	IdFondoPension                    int                `orm:"column(id_fondo_pension);null"`
 	IdCajaCompensacion                int                `orm:"column(id_caja_compensacion);null"`
-	FechaExpedicionDocumento          time.Time          `orm:"column(fecha_expedicion_documento);type(date);auto_now"`
+	FechaExpedicionDocumento          time.Time          `orm:"column(fecha_expedicion_documento);type(date)"`
 	IdCiudadExpedicionDocumento       float64            `orm:"column(id_ciudad_expedicion_documento)"`
 }
 

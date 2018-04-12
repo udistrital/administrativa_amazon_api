@@ -14,7 +14,7 @@ type Cesion struct {
 	Id                 int       `orm:"column(id);pk"`
 	NuevoContratista   float64   `orm:"column(nuevo_contratista)"`
 	AntiguoContratista float64   `orm:"column(antiguo_contratista)"`
-	FechaCesion        time.Time `orm:"column(fecha_cesion);type(date);null;auto_now"`
+	FechaCesion        time.Time `orm:"column(fecha_cesion);type(date);null"`
 }
 
 func (t *Cesion) TableName() string {

@@ -21,7 +21,7 @@ type ProveedorContratoPersona struct {
 	Vigencia_contrato          int       `orm:"column(vigencia)"`
 	Objeto_contrato            string    `orm:"column(objeto_contrato)"`
 	Valor_contrato             string    `orm:"column(valor_contrato)"`
-	Fecha_registro             time.Time `orm:"column(fecha_registro);type(date);auto_now"`
+	Fecha_registro             time.Time `orm:"column(fecha_registro);type(date)"`
 	Observaciones              string    `orm:"column(observaciones)"`
 	Justificacion              string    `orm:"column(justificacion)"`
 	Unidad_ejecutora           int       `orm:"column(unidad_ejecutora)"`

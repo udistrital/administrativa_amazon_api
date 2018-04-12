@@ -13,8 +13,8 @@ import (
 type AmparoPoliza struct {
 	Poliza          *Poliza   `orm:"column(poliza);rel(fk)"`
 	Estado          bool      `orm:"column(estado);null"`
-	FechaInicio     time.Time `orm:"column(fecha_inicio);type(date);null;auto_now"`
-	FechaFinal      time.Time `orm:"column(fecha_final);type(date);null;auto_now"`
+	FechaInicio     time.Time `orm:"column(fecha_inicio);type(date);null"`
+	FechaFinal      time.Time `orm:"column(fecha_final);type(date);null"`
 	UnidadAmparo    float64   `orm:"column(unidad_amparo)"`
 	Id              int       `orm:"column(id);pk"`
 	Amparo          int       `orm:"column(amparo);null"`

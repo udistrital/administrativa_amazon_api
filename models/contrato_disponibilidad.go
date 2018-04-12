@@ -16,7 +16,7 @@ type ContratoDisponibilidad struct {
 	NumeroContrato string    `orm:"column(numero_contrato);null"`
 	Vigencia       int       `orm:"column(vigencia);null"`
 	Estado         bool      `orm:"column(estado);null"`
-	FechaRegistro  time.Time `orm:"column(fecha_registro);type(date);null;auto_now"`
+	FechaRegistro  time.Time `orm:"column(fecha_registro);type(date);null"`
 	VigenciaCdp    int       `orm:"column(vigencia_cdp);null"`
 }
 

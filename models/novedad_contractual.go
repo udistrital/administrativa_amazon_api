@@ -16,7 +16,7 @@ type NovedadContractual struct {
 	NumeroContrato     string      `orm:"column(numero_contrato)"`
 	Vigencia           int         `orm:"column(vigencia);null"`
 	Estado             bool        `orm:"column(estado);null"`
-	FechaRegistro      time.Time   `orm:"column(fecha_registro);type(timestamp without time zone);auto_now"`
+	FechaRegistro      time.Time   `orm:"column(fecha_registro);type(timestamp without time zone)"`
 	Usuario            string      `orm:"column(usuario)"`
 	ActoAdministrativo string      `orm:"column(acto_administrativo);null"`
 	Documento          string      `orm:"column(documento)"`

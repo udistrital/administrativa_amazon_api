@@ -12,7 +12,7 @@ import (
 
 type SolicitudRp struct {
 	Vigencia             int       `orm:"column(vigencia)"`
-	FechaSolicitud       time.Time `orm:"column(fecha_solicitud);type(date);null;auto_now"`
+	FechaSolicitud       time.Time `orm:"column(fecha_solicitud);type(date);null"`
 	Cdp                  int       `orm:"column(cdp)"`
 	Expedida             bool      `orm:"column(expedida);null"`
 	NumeroContrato       string    `orm:"column(numero_contrato)"`

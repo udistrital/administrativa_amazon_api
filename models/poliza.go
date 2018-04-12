@@ -13,16 +13,16 @@ import (
 type Poliza struct {
 	Id                 int       `orm:"column(id_poliza);pk"`
 	DescripcionPoliza  string    `orm:"column(descripcion_poliza)"`
-	FechaRegistro      time.Time `orm:"column(fecha_registro);type(date);auto_now"`
+	FechaRegistro      time.Time `orm:"column(fecha_registro);type(date)"`
 	Usuario            string    `orm:"column(usuario)"`
 	Estado             bool      `orm:"column(estado)"`
-	FechaInicio        time.Time `orm:"column(fecha_inicio);type(date);auto_now"`
-	FechaFin           time.Time `orm:"column(fecha_fin);type(date);auto_now"`
+	FechaInicio        time.Time `orm:"column(fecha_inicio);type(date)"`
+	FechaFin           time.Time `orm:"column(fecha_fin);type(date)"`
 	NumeroContrato     string    `orm:"column(numero_contrato)"`
 	Vigencia           int       `orm:"column(vigencia)"`
 	NumeroPoliza       string    `orm:"column(numero_poliza)"`
 	EntidadAseguradora int       `orm:"column(entidad_aseguradora)"`
-	FechaAprobacion    time.Time `orm:"column(fecha_aprobacion);type(date);auto_now"`
+	FechaAprobacion    time.Time `orm:"column(fecha_aprobacion);type(date)"`
 }
 
 func (t *Poliza) TableName() string {

@@ -15,7 +15,7 @@ type Orden struct {
 	TipoOrden      int       `orm:"column(tipo_orden);null"`
 	NumeroContrato string    `orm:"column(numero_contrato);null"`
 	Vigencia       int       `orm:"column(vigencia);null"`
-	FechaRegistro  time.Time `orm:"column(fecha_registro);type(date);null;auto_now"`
+	FechaRegistro  time.Time `orm:"column(fecha_registro);type(date);null"`
 	Estado         bool      `orm:"column(estado);null"`
 	Poliza         bool      `orm:"column(poliza);null"`
 }

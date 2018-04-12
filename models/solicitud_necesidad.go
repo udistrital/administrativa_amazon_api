@@ -19,7 +19,7 @@ type SolicitudNecesidad struct {
 	DependenciaDestino     *DependenciaTemporal      `orm:"column(dependencia_destino);rel(fk)"`
 	ObjetoContractual      string                    `orm:"column(objeto_contractual)"`
 	Estado                 *EstadoSolicitudNecesidad `orm:"column(estado);rel(fk)"`
-	FechaSolicitud         time.Time                 `orm:"column(fecha_solicitud);type(date);auto_now"`
+	FechaSolicitud         time.Time                 `orm:"column(fecha_solicitud);type(date)"`
 	ValorContratacion      float64                   `orm:"column(valor_contratacion)"`
 	Justificacion          string                    `orm:"column(justificacion)"`
 	UnidadEjecutora        int                       `orm:"column(unidad_ejecutora)"`
@@ -33,7 +33,7 @@ type SolicitudNecesidad struct {
 	Servicio               *Servicio                 `orm:"column(servicio);rel(fk)"`
 	PlanAnualAdquisiciones int                       `orm:"column(plan_anual_adquisiciones)"`
 	EstudioMercado         string                    `orm:"column(estudio_mercado);null"`
-	FechaEvaluacion        time.Time                 `orm:"column(fecha_evaluacion);type(date);null;auto_now"`
+	FechaEvaluacion        time.Time                 `orm:"column(fecha_evaluacion);type(date);null"`
 	OrdenadorGasto         *OrdenadorGastoTemporal   `orm:"column(ordenador_gasto);rel(fk)"`
 	JustificacionRechazo   string                    `orm:"column(justificacion_rechazo);null"`
 	TipoContratacion       *TipoContratacion         `orm:"column(tipo_contratacion);rel(fk)"`
