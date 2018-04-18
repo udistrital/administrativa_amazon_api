@@ -1,2 +1,7 @@
 administrativa_amazon_api
 lastupdate.tmp
+coverage.xml
+report.xml
+sonar-project.properties
+.scannerwork/.sonar_lock
+.scannerwork/report-task.txt
