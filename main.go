@@ -7,6 +7,7 @@ import (
 	"github.com/astaxie/beego/orm"
 	_ "github.com/lib/pq"
 	"github.com/astaxie/beego/plugins/cors"
+	"github.com/astaxie/beego/logs"
 	"github.com/udistrital/utils_oas/apiStatusLib"
 )
 
@@ -34,6 +35,8 @@ func main() {
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
 	}))
+
+	logs.SetLogger(logs.AdapterFile, `{"filename":"/var/log/beego/administrativa_amazon_api.log"}`)
 	apistatus.Init()
 	beego.Run()
 }
