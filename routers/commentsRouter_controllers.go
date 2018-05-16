@@ -1863,6 +1863,46 @@ func init() {
 			MethodParams: param.Make(),
 			Params: nil})
 
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"],
+		beego.ControllerComments{
+			Method: "Post",
+			Router: `/`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"],
+		beego.ControllerComments{
+			Method: "GetOne",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"],
+		beego.ControllerComments{
+			Method: "Put",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"put"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"],
+		beego.ControllerComments{
+			Method: "Delete",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"delete"},
+			MethodParams: param.Make(),
+			Params: nil})
+
 	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaNaturalController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaNaturalController"],
 		beego.ControllerComments{
 			Method: "Post",
@@ -4152,6 +4192,46 @@ func init() {
 			Params: nil})
 
 	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoContratoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoContratoController"],
+		beego.ControllerComments{
+			Method: "Delete",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"delete"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"],
+		beego.ControllerComments{
+			Method: "Post",
+			Router: `/`,
+			AllowHTTPMethods: []string{"post"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"],
+		beego.ControllerComments{
+			Method: "GetOne",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"],
+		beego.ControllerComments{
+			Method: "GetAll",
+			Router: `/`,
+			AllowHTTPMethods: []string{"get"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"],
+		beego.ControllerComments{
+			Method: "Put",
+			Router: `/:id`,
+			AllowHTTPMethods: []string{"put"},
+			MethodParams: param.Make(),
+			Params: nil})
+
+	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"],
 		beego.ControllerComments{
 			Method: "Delete",
 			Router: `/:id`,

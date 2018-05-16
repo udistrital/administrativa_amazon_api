@@ -22,6 +22,18 @@ func init() {
 			),
 		),
 
+		beego.NSNamespace("/informacion_persona_juridica_tipo_entidad",
+			beego.NSInclude(
+				&controllers.InformacionPersonaJuridicaTipoEntidadController{},
+			),
+		),
+
+		beego.NSNamespace("/tipo_entidad",
+			beego.NSInclude(
+				&controllers.TipoEntidadController{},
+			),
+		),
+
 		beego.NSNamespace("/resolucion_estado",
 			beego.NSInclude(
 				&controllers.ResolucionEstadoController{},
