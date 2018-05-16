@@ -13,7 +13,7 @@
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         }
     },
-    "basePath": "/v1",
+    "basePath": "/administrativa_amazon_api/v1",
     "paths": {
         "/acta_inicio/": {
             "get": {
