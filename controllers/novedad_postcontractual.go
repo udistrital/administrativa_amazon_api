@@ -29,7 +29,7 @@ func (c *NovedadPostcontractualController) URLMapping() {
 // @Description create NovedadPostcontractual
 // @Param	body		body 	models.NovedadPostcontractual	true		"body for NovedadPostcontractual content"
 // @Success 201 {int} models.NovedadPostcontractual
-// @Failure 403 body is empty
+// @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *NovedadPostcontractualController) Post() {
 	var v models.NovedadPostcontractual
@@ -38,10 +38,12 @@ func (c *NovedadPostcontractualController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -51,14 +53,15 @@ func (c *NovedadPostcontractualController) Post() {
 // @Description get NovedadPostcontractual by id
 // @Param	id		path 	string	true		"The key for staticblock"
 // @Success 200 {object} models.NovedadPostcontractual
-// @Failure 403 :id is empty
+// @Failure 404 not found resource
 // @router /:id [get]
 func (c *NovedadPostcontractualController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetNovedadPostcontractualById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
@@ -75,7 +78,7 @@ func (c *NovedadPostcontractualController) GetOne() {
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
 // @Success 200 {object} models.NovedadPostcontractual
-// @Failure 403
+// @Failure 404 not found resource
 // @router / [get]
 func (c *NovedadPostcontractualController) GetAll() {
 	var fields []string
@@ -121,8 +124,12 @@ func (c *NovedadPostcontractualController) GetAll() {
 
 	l, err := models.GetAllNovedadPostcontractual(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -134,7 +141,7 @@ func (c *NovedadPostcontractualController) GetAll() {
 // @Param	id		path 	string	true		"The id you want to update"
 // @Param	body		body 	models.NovedadPostcontractual	true		"body for NovedadPostcontractual content"
 // @Success 200 {object} models.NovedadPostcontractual
-// @Failure 403 :id is not int
+// @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
 func (c *NovedadPostcontractualController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
@@ -142,12 +149,14 @@ func (c *NovedadPostcontractualController) Put() {
 	v := models.NovedadPostcontractual{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateNovedadPostcontractualById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -157,15 +166,16 @@ func (c *NovedadPostcontractualController) Put() {
 // @Description delete the NovedadPostcontractual
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
-// @Failure 403 id is empty
+// @Failure 404 not found resource
 // @router /:id [delete]
 func (c *NovedadPostcontractualController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteNovedadPostcontractual(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }

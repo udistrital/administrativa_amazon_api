@@ -29,7 +29,7 @@ func (c *ParametroUnidadController) URLMapping() {
 // @Description create ParametroUnidad
 // @Param	body		body 	models.ParametroUnidad	true		"body for ParametroUnidad content"
 // @Success 201 {int} models.ParametroUnidad
-// @Failure 403 body is empty
+// @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *ParametroUnidadController) Post() {
 	var v models.ParametroUnidad
@@ -38,10 +38,12 @@ func (c *ParametroUnidadController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -51,14 +53,15 @@ func (c *ParametroUnidadController) Post() {
 // @Description get ParametroUnidad by id
 // @Param	id		path 	string	true		"The key for staticblock"
 // @Success 200 {object} models.ParametroUnidad
-// @Failure 403 :id is empty
+// @Failure 404 not found resource
 // @router /:id [get]
 func (c *ParametroUnidadController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetParametroUnidadById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
@@ -75,7 +78,7 @@ func (c *ParametroUnidadController) GetOne() {
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
 // @Success 200 {object} models.ParametroUnidad
-// @Failure 403
+// @Failure 404 not found resource
 // @router / [get]
 func (c *ParametroUnidadController) GetAll() {
 	var fields []string
@@ -121,8 +124,12 @@ func (c *ParametroUnidadController) GetAll() {
 
 	l, err := models.GetAllParametroUnidad(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -134,7 +141,7 @@ func (c *ParametroUnidadController) GetAll() {
 // @Param	id		path 	string	true		"The id you want to update"
 // @Param	body		body 	models.ParametroUnidad	true		"body for ParametroUnidad content"
 // @Success 200 {object} models.ParametroUnidad
-// @Failure 403 :id is not int
+// @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
 func (c *ParametroUnidadController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
@@ -142,12 +149,14 @@ func (c *ParametroUnidadController) Put() {
 	v := models.ParametroUnidad{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateParametroUnidadById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -157,15 +166,16 @@ func (c *ParametroUnidadController) Put() {
 // @Description delete the ParametroUnidad
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
-// @Failure 403 id is empty
+// @Failure 404 not found resource
 // @router /:id [delete]
 func (c *ParametroUnidadController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteParametroUnidad(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }

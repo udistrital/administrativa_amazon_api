@@ -29,7 +29,7 @@ func (c *ActividadesCentroCostosController) URLMapping() {
 // @Description create ActividadesCentroCostos
 // @Param	body		body 	models.ActividadesCentroCostos	true		"body for ActividadesCentroCostos content"
 // @Success 201 {int} models.ActividadesCentroCostos
-// @Failure 403 body is empty
+// @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *ActividadesCentroCostosController) Post() {
 	var v models.ActividadesCentroCostos
@@ -38,10 +38,12 @@ func (c *ActividadesCentroCostosController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -51,14 +53,15 @@ func (c *ActividadesCentroCostosController) Post() {
 // @Description get ActividadesCentroCostos by id
 // @Param	id		path 	string	true		"The key for staticblock"
 // @Success 200 {object} models.ActividadesCentroCostos
-// @Failure 403 :id is empty
+// @Failure 404 not found resource
 // @router /:id [get]
 func (c *ActividadesCentroCostosController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetActividadesCentroCostosById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
@@ -75,7 +78,7 @@ func (c *ActividadesCentroCostosController) GetOne() {
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
 // @Success 200 {object} models.ActividadesCentroCostos
-// @Failure 403
+// @Failure 404 not found resource
 // @router / [get]
 func (c *ActividadesCentroCostosController) GetAll() {
 	var fields []string
@@ -121,8 +124,12 @@ func (c *ActividadesCentroCostosController) GetAll() {
 
 	l, err := models.GetAllActividadesCentroCostos(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -134,7 +141,7 @@ func (c *ActividadesCentroCostosController) GetAll() {
 // @Param	id		path 	string	true		"The id you want to update"
 // @Param	body		body 	models.ActividadesCentroCostos	true		"body for ActividadesCentroCostos content"
 // @Success 200 {object} models.ActividadesCentroCostos
-// @Failure 403 :id is not int
+// @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
 func (c *ActividadesCentroCostosController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
@@ -142,12 +149,14 @@ func (c *ActividadesCentroCostosController) Put() {
 	v := models.ActividadesCentroCostos{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateActividadesCentroCostosById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -157,15 +166,16 @@ func (c *ActividadesCentroCostosController) Put() {
 // @Description delete the ActividadesCentroCostos
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
-// @Failure 403 id is empty
+// @Failure 404 not found resource
 // @router /:id [delete]
 func (c *ActividadesCentroCostosController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteActividadesCentroCostos(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }

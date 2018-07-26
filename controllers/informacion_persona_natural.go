@@ -29,7 +29,7 @@ func (c *InformacionPersonaNaturalController) URLMapping() {
 // @Description create InformacionPersonaNatural
 // @Param	body		body 	models.InformacionPersonaNatural	true		"body for InformacionPersonaNatural content"
 // @Success 201 {int} models.InformacionPersonaNatural
-// @Failure 403 body is empty
+// @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *InformacionPersonaNaturalController) Post() {
 	var v models.InformacionPersonaNatural
@@ -38,10 +38,12 @@ func (c *InformacionPersonaNaturalController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -51,13 +53,14 @@ func (c *InformacionPersonaNaturalController) Post() {
 // @Description get InformacionPersonaNatural by id
 // @Param	id		path 	string	true		"The key for staticblock"
 // @Success 200 {object} models.InformacionPersonaNatural
-// @Failure 403 :id is empty
+// @Failure 404 not found resource
 // @router /:id [get]
 func (c *InformacionPersonaNaturalController) GetOne() {
 	id := c.Ctx.Input.Param(":id")
 	v, err := models.GetInformacionPersonaNaturalById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
@@ -74,7 +77,7 @@ func (c *InformacionPersonaNaturalController) GetOne() {
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
 // @Success 200 {object} models.InformacionPersonaNatural
-// @Failure 403
+// @Failure 404 not found resource
 // @router / [get]
 func (c *InformacionPersonaNaturalController) GetAll() {
 	var fields []string
@@ -120,8 +123,12 @@ func (c *InformacionPersonaNaturalController) GetAll() {
 
 	l, err := models.GetAllInformacionPersonaNatural(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -133,19 +140,21 @@ func (c *InformacionPersonaNaturalController) GetAll() {
 // @Param	id		path 	string	true		"The id you want to update"
 // @Param	body		body 	models.InformacionPersonaNatural	true		"body for InformacionPersonaNatural content"
 // @Success 200 {object} models.InformacionPersonaNatural
-// @Failure 403 :id is not int
+// @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
 func (c *InformacionPersonaNaturalController) Put() {
 	id := c.Ctx.Input.Param(":id")
 	v := models.InformacionPersonaNatural{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateInformacionPersonaNaturalById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -155,14 +164,15 @@ func (c *InformacionPersonaNaturalController) Put() {
 // @Description delete the InformacionPersonaNatural
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
-// @Failure 403 id is empty
+// @Failure 404 not found resource
 // @router /:id [delete]
 func (c *InformacionPersonaNaturalController) Delete() {
 	id := c.Ctx.Input.Param(":id")
 	if err := models.DeleteInformacionPersonaNatural(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }

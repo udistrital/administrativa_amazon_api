@@ -61,9 +61,10 @@ func (c *ResolucionCompletaController) Put() {
 	v := models.ResolucionCompleta{Id: idResolucion}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateResolucionCompletaById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 		}
 	} else {
 		fmt.Println(err.Error())

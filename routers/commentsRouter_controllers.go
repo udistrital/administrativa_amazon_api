@@ -1873,16 +1873,16 @@ func init() {
 
 	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"],
 		beego.ControllerComments{
-			Method: "GetOne",
-			Router: `/:id`,
+			Method: "GetAll",
+			Router: `/`,
 			AllowHTTPMethods: []string{"get"},
 			MethodParams: param.Make(),
 			Params: nil})
 
 	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:InformacionPersonaJuridicaTipoEntidadController"],
 		beego.ControllerComments{
-			Method: "GetAll",
-			Router: `/`,
+			Method: "GetOne",
+			Router: `/:id`,
 			AllowHTTPMethods: []string{"get"},
 			MethodParams: param.Make(),
 			Params: nil})
@@ -4249,16 +4249,16 @@ func init() {
 
 	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"],
 		beego.ControllerComments{
-			Method: "GetOne",
-			Router: `/:id`,
+			Method: "GetAll",
+			Router: `/`,
 			AllowHTTPMethods: []string{"get"},
 			MethodParams: param.Make(),
 			Params: nil})
 
 	beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"] = append(beego.GlobalControllerRouter["github.com/udistrital/administrativa_amazon_api/controllers:TipoEntidadController"],
 		beego.ControllerComments{
-			Method: "GetAll",
-			Router: `/`,
+			Method: "GetOne",
+			Router: `/:id`,
 			AllowHTTPMethods: []string{"get"},
 			MethodParams: param.Make(),
 			Params: nil})

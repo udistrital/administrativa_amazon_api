@@ -29,7 +29,7 @@ func (c *EspaciosfisicosSICController) URLMapping() {
 // @Description create EspaciosfisicosSIC
 // @Param	body		body 	models.EspaciosfisicosSIC	true		"body for EspaciosfisicosSIC content"
 // @Success 201 {int} models.EspaciosfisicosSIC
-// @Failure 403 body is empty
+// @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *EspaciosfisicosSICController) Post() {
 	var v models.EspaciosfisicosSIC
@@ -38,10 +38,12 @@ func (c *EspaciosfisicosSICController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -51,14 +53,15 @@ func (c *EspaciosfisicosSICController) Post() {
 // @Description get EspaciosfisicosSIC by id
 // @Param	id		path 	string	true		"The key for staticblock"
 // @Success 200 {object} models.EspaciosfisicosSIC
-// @Failure 403 :id is empty
+// @Failure 404 not found resource
 // @router /:id [get]
 func (c *EspaciosfisicosSICController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetEspaciosfisicosSICById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
@@ -75,7 +78,7 @@ func (c *EspaciosfisicosSICController) GetOne() {
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
 // @Success 200 {object} models.EspaciosfisicosSIC
-// @Failure 403
+// @Failure 404 not found resource
 // @router / [get]
 func (c *EspaciosfisicosSICController) GetAll() {
 	var fields []string
@@ -121,8 +124,12 @@ func (c *EspaciosfisicosSICController) GetAll() {
 
 	l, err := models.GetAllEspaciosfisicosSIC(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -134,7 +141,7 @@ func (c *EspaciosfisicosSICController) GetAll() {
 // @Param	id		path 	string	true		"The id you want to update"
 // @Param	body		body 	models.EspaciosfisicosSIC	true		"body for EspaciosfisicosSIC content"
 // @Success 200 {object} models.EspaciosfisicosSIC
-// @Failure 403 :id is not int
+// @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
 func (c *EspaciosfisicosSICController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
@@ -142,12 +149,14 @@ func (c *EspaciosfisicosSICController) Put() {
 	v := models.EspaciosfisicosSIC{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateEspaciosfisicosSICById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+			beego.Error(err)
+			c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -157,15 +166,16 @@ func (c *EspaciosfisicosSICController) Put() {
 // @Description delete the EspaciosfisicosSIC
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
-// @Failure 403 id is empty
+// @Failure 404 not found resource
 // @router /:id [delete]
 func (c *EspaciosfisicosSICController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteEspaciosfisicosSIC(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		c.Data["json"] = err.Error()
+		beego.Error(err)
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }
