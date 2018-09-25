@@ -5,55 +5,52 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type ActaInicio struct {
-	Id             int       `orm:"column(id);pk;auto"`
-	NumeroContrato string    `orm:"column(numero_contrato);null"`
-	Vigencia       int       `orm:"column(vigencia);null"`
-	FechaInicio    time.Time `orm:"column(fecha_inicio);type(timestamp without time zone);null"`
-	FechaFin       time.Time `orm:"column(fecha_fin);type(timestamp without time zone);null"`
-	Descripcion    string    `orm:"column(descripcion);null"`
-	Usuario        string    `orm:"column(usuario);null"`
+type TipoEntidad struct {
+	Id          int    `orm:"column(id);pk;auto"`
+	NombreTipo  string `orm:"column(nombre_tipo)"`
+	Descripcion string `orm:"column(descripcion);null"`
+	Abreviatura string `orm:"column(abreviatura);null"`
+	Categoria   string `orm:"column(categoria);null"`
+	Estado      string `orm:"column(estado)"`
 }
 
-func (t *ActaInicio) TableName() string {
-	return "acta_inicio"
+func (t *TipoEntidad) TableName() string {
+	return "tipo_entidad"
 }
 
 func init() {
-	orm.RegisterModel(new(ActaInicio))
+	orm.RegisterModel(new(TipoEntidad))
 }
 
-// AddActaInicio insert a new ActaInicio into database and returns
+// AddTipoEntidad insert a new TipoEntidad into database and returns
 // last inserted Id on success.
-func AddActaInicio(m *ActaInicio) (id int64, err error) {
+func AddTipoEntidad(m *TipoEntidad) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetActaInicioById retrieves ActaInicio by Id. Returns error if
+// GetTipoEntidadById retrieves TipoEntidad by Id. Returns error if
 // Id doesn't exist
-func GetActaInicioById(id int) (v *ActaInicio, err error) {
+func GetTipoEntidadById(id int) (v *TipoEntidad, err error) {
 	o := orm.NewOrm()
-	v = &ActaInicio{Id: id}
+	v = &TipoEntidad{Id: id}
 	if err = o.Read(v); err == nil {
-		v.FechaInicio = v.FechaInicio.UTC()
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllActaInicio retrieves all ActaInicio matches certain condition. Returns empty list if
+// GetAllTipoEntidad retrieves all TipoEntidad matches certain condition. Returns empty list if
 // no records exist
-func GetAllActaInicio(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllTipoEntidad(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ActaInicio))
+	qs := o.QueryTable(new(TipoEntidad)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -103,12 +100,11 @@ func GetAllActaInicio(query map[string]string, fields []string, sortby []string,
 		}
 	}
 
-	var l []ActaInicio
+	var l []TipoEntidad
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
 			for _, v := range l {
-				v.FechaInicio = v.FechaInicio.UTC()
 				ml = append(ml, v)
 			}
 		} else {
@@ -127,11 +123,11 @@ func GetAllActaInicio(query map[string]string, fields []string, sortby []string,
 	return nil, err
 }
 
-// UpdateActaInicio updates ActaInicio by Id and returns error if
+// UpdateTipoEntidad updates TipoEntidad by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateActaInicioById(m *ActaInicio) (err error) {
+func UpdateTipoEntidadById(m *TipoEntidad) (err error) {
 	o := orm.NewOrm()
-	v := ActaInicio{Id: m.Id}
+	v := TipoEntidad{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -142,15 +138,15 @@ func UpdateActaInicioById(m *ActaInicio) (err error) {
 	return
 }
 
-// DeleteActaInicio deletes ActaInicio by Id and returns error if
+// DeleteTipoEntidad deletes TipoEntidad by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteActaInicio(id int) (err error) {
+func DeleteTipoEntidad(id int) (err error) {
 	o := orm.NewOrm()
-	v := ActaInicio{Id: id}
+	v := TipoEntidad{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&ActaInicio{Id: id}); err == nil {
+		if num, err = o.Delete(&TipoEntidad{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}

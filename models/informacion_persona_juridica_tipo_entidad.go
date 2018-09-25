@@ -5,55 +5,51 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type ActaInicio struct {
-	Id             int       `orm:"column(id);pk;auto"`
-	NumeroContrato string    `orm:"column(numero_contrato);null"`
-	Vigencia       int       `orm:"column(vigencia);null"`
-	FechaInicio    time.Time `orm:"column(fecha_inicio);type(timestamp without time zone);null"`
-	FechaFin       time.Time `orm:"column(fecha_fin);type(timestamp without time zone);null"`
-	Descripcion    string    `orm:"column(descripcion);null"`
-	Usuario        string    `orm:"column(usuario);null"`
+type InformacionPersonaJuridicaTipoEntidad struct {
+	Id                           int                         `orm:"column(id);pk;auto"`
+	NombrePerfilEntidad          string                      `orm:"column(nombre_perfil_entidad);null"`
+	TipoEntidadId                *TipoEntidad                `orm:"column(tipo_entidad_id);rel(fk)"`
+	InformacionPersonaJuridicaId *InformacionPersonaJuridica `orm:"column(informacion_persona_juridica_id);rel(fk)"`
+	Estado                       int                         `orm:"column(estado)"`
 }
 
-func (t *ActaInicio) TableName() string {
-	return "acta_inicio"
+func (t *InformacionPersonaJuridicaTipoEntidad) TableName() string {
+	return "informacion_persona_juridica_tipo_entidad"
 }
 
 func init() {
-	orm.RegisterModel(new(ActaInicio))
+	orm.RegisterModel(new(InformacionPersonaJuridicaTipoEntidad))
 }
 
-// AddActaInicio insert a new ActaInicio into database and returns
+// AddInformacionPersonaJuridicaTipoEntidad insert a new InformacionPersonaJuridicaTipoEntidad into database and returns
 // last inserted Id on success.
-func AddActaInicio(m *ActaInicio) (id int64, err error) {
+func AddInformacionPersonaJuridicaTipoEntidad(m *InformacionPersonaJuridicaTipoEntidad) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetActaInicioById retrieves ActaInicio by Id. Returns error if
+// GetInformacionPersonaJuridicaTipoEntidadById retrieves InformacionPersonaJuridicaTipoEntidad by Id. Returns error if
 // Id doesn't exist
-func GetActaInicioById(id int) (v *ActaInicio, err error) {
+func GetInformacionPersonaJuridicaTipoEntidadById(id int) (v *InformacionPersonaJuridicaTipoEntidad, err error) {
 	o := orm.NewOrm()
-	v = &ActaInicio{Id: id}
+	v = &InformacionPersonaJuridicaTipoEntidad{Id: id}
 	if err = o.Read(v); err == nil {
-		v.FechaInicio = v.FechaInicio.UTC()
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllActaInicio retrieves all ActaInicio matches certain condition. Returns empty list if
+// GetAllInformacionPersonaJuridicaTipoEntidad retrieves all InformacionPersonaJuridicaTipoEntidad matches certain condition. Returns empty list if
 // no records exist
-func GetAllActaInicio(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllInformacionPersonaJuridicaTipoEntidad(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ActaInicio))
+	qs := o.QueryTable(new(InformacionPersonaJuridicaTipoEntidad)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -103,12 +99,11 @@ func GetAllActaInicio(query map[string]string, fields []string, sortby []string,
 		}
 	}
 
-	var l []ActaInicio
+	var l []InformacionPersonaJuridicaTipoEntidad
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
 			for _, v := range l {
-				v.FechaInicio = v.FechaInicio.UTC()
 				ml = append(ml, v)
 			}
 		} else {
@@ -127,11 +122,11 @@ func GetAllActaInicio(query map[string]string, fields []string, sortby []string,
 	return nil, err
 }
 
-// UpdateActaInicio updates ActaInicio by Id and returns error if
+// UpdateInformacionPersonaJuridicaTipoEntidad updates InformacionPersonaJuridicaTipoEntidad by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateActaInicioById(m *ActaInicio) (err error) {
+func UpdateInformacionPersonaJuridicaTipoEntidadById(m *InformacionPersonaJuridicaTipoEntidad) (err error) {
 	o := orm.NewOrm()
-	v := ActaInicio{Id: m.Id}
+	v := InformacionPersonaJuridicaTipoEntidad{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -142,15 +137,15 @@ func UpdateActaInicioById(m *ActaInicio) (err error) {
 	return
 }
 
-// DeleteActaInicio deletes ActaInicio by Id and returns error if
+// DeleteInformacionPersonaJuridicaTipoEntidad deletes InformacionPersonaJuridicaTipoEntidad by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteActaInicio(id int) (err error) {
+func DeleteInformacionPersonaJuridicaTipoEntidad(id int) (err error) {
 	o := orm.NewOrm()
-	v := ActaInicio{Id: id}
+	v := InformacionPersonaJuridicaTipoEntidad{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&ActaInicio{Id: id}); err == nil {
+		if num, err = o.Delete(&InformacionPersonaJuridicaTipoEntidad{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
