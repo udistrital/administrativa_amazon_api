@@ -14,8 +14,8 @@ type ActaInicio struct {
 	Id             int       `orm:"column(id);pk;auto"`
 	NumeroContrato string    `orm:"column(numero_contrato);null"`
 	Vigencia       int       `orm:"column(vigencia);null"`
-	FechaInicio    time.Time `orm:"column(fecha_inicio);type(timestamp without time zone);null"`
-	FechaFin       time.Time `orm:"column(fecha_fin);type(timestamp without time zone);null"`
+	FechaInicio    time.Time `orm:"column(fecha_inicio);type(date);null"`
+	FechaFin       time.Time `orm:"column(fecha_fin);type(date);null"`
 	Descripcion    string    `orm:"column(descripcion);null"`
 	Usuario        string    `orm:"column(usuario);null"`
 }
@@ -42,7 +42,6 @@ func GetActaInicioById(id int) (v *ActaInicio, err error) {
 	o := orm.NewOrm()
 	v = &ActaInicio{Id: id}
 	if err = o.Read(v); err == nil {
-		v.FechaInicio = v.FechaInicio.UTC()
 		return v, nil
 	}
 	return nil, err
@@ -108,7 +107,6 @@ func GetAllActaInicio(query map[string]string, fields []string, sortby []string,
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
 			for _, v := range l {
-				v.FechaInicio = v.FechaInicio.UTC()
 				ml = append(ml, v)
 			}
 		} else {

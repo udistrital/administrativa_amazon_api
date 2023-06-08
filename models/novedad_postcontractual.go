@@ -11,7 +11,7 @@ import (
 )
 
 type NovedadPostcontractual struct {
-	Id              int       `orm:"column(id);pk;auto"`
+	Id              int       `orm:"column(id);pk"`
 	NumeroContrato  string    `orm:"column(numero_contrato)"`
 	Vigencia        int       `orm:"column(vigencia)"`
 	TipoNovedad     float64   `orm:"column(tipo_novedad)"`
