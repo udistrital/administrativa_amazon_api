@@ -5,60 +5,52 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
-type NovedadPostcontractual struct {
-	Id              int       `orm:"column(id);pk;auto"`
-	NumeroContrato  string    `orm:"column(numero_contrato)"`
-	Vigencia        int       `orm:"column(vigencia)"`
-	TipoNovedad     float64   `orm:"column(tipo_novedad)"`
-	FechaInicio     time.Time `orm:"column(fecha_inicio);type(date);null"`
-	FechaFin        time.Time `orm:"column(fecha_fin);type(date);null"`
-	FechaRegistro   time.Time `orm:"column(fecha_registro);type(date)"`
-	Contratista     float64   `orm:"column(contratista);null"`
-	NumeroCdp       int       `orm:"column(numero_cdp);null"`
-	VigenciaCdp     int       `orm:"column(vigencia_cdp);null"`
-	PlazoEjecucion  int       `orm:"column(plazo_ejecucion);null"`
-	UnidadEjecucion int       `orm:"column(unidad_ejecucion);null"`
-	ValorNovedad    float64   `orm:"column(valor_novedad);null"`
+type TipoEntidad struct {
+	Id          int    `orm:"column(id);pk;auto"`
+	NombreTipo  string `orm:"column(nombre_tipo)"`
+	Descripcion string `orm:"column(descripcion);null"`
+	Abreviatura string `orm:"column(abreviatura);null"`
+	Categoria   string `orm:"column(categoria);null"`
+	Estado      string `orm:"column(estado)"`
 }
 
-func (t *NovedadPostcontractual) TableName() string {
-	return "novedad_postcontractual"
+func (t *TipoEntidad) TableName() string {
+	return "tipo_entidad"
 }
 
 func init() {
-	orm.RegisterModel(new(NovedadPostcontractual))
+	orm.RegisterModel(new(TipoEntidad))
 }
 
-// AddNovedadPostcontractual insert a new NovedadPostcontractual into database and returns
+// AddTipoEntidad insert a new TipoEntidad into database and returns
 // last inserted Id on success.
-func AddNovedadPostcontractual(m *NovedadPostcontractual) (id int64, err error) {
+func AddTipoEntidad(m *TipoEntidad) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetNovedadPostcontractualById retrieves NovedadPostcontractual by Id. Returns error if
+// GetTipoEntidadById retrieves TipoEntidad by Id. Returns error if
 // Id doesn't exist
-func GetNovedadPostcontractualById(id int) (v *NovedadPostcontractual, err error) {
+func GetTipoEntidadById(id int) (v *TipoEntidad, err error) {
 	o := orm.NewOrm()
-	v = &NovedadPostcontractual{Id: id}
+	v = &TipoEntidad{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllNovedadPostcontractual retrieves all NovedadPostcontractual matches certain condition. Returns empty list if
+// GetAllTipoEntidad retrieves all TipoEntidad matches certain condition. Returns empty list if
 // no records exist
-func GetAllNovedadPostcontractual(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllTipoEntidad(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(NovedadPostcontractual))
+	qs := o.QueryTable(new(TipoEntidad)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -108,7 +100,7 @@ func GetAllNovedadPostcontractual(query map[string]string, fields []string, sort
 		}
 	}
 
-	var l []NovedadPostcontractual
+	var l []TipoEntidad
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -131,11 +123,11 @@ func GetAllNovedadPostcontractual(query map[string]string, fields []string, sort
 	return nil, err
 }
 
-// UpdateNovedadPostcontractual updates NovedadPostcontractual by Id and returns error if
+// UpdateTipoEntidad updates TipoEntidad by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateNovedadPostcontractualById(m *NovedadPostcontractual) (err error) {
+func UpdateTipoEntidadById(m *TipoEntidad) (err error) {
 	o := orm.NewOrm()
-	v := NovedadPostcontractual{Id: m.Id}
+	v := TipoEntidad{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -146,15 +138,15 @@ func UpdateNovedadPostcontractualById(m *NovedadPostcontractual) (err error) {
 	return
 }
 
-// DeleteNovedadPostcontractual deletes NovedadPostcontractual by Id and returns error if
+// DeleteTipoEntidad deletes TipoEntidad by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteNovedadPostcontractual(id int) (err error) {
+func DeleteTipoEntidad(id int) (err error) {
 	o := orm.NewOrm()
-	v := NovedadPostcontractual{Id: id}
+	v := TipoEntidad{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&NovedadPostcontractual{Id: id}); err == nil {
+		if num, err = o.Delete(&TipoEntidad{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
