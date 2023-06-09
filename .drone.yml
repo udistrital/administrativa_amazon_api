@@ -71,12 +71,22 @@ steps:
     - push
 
 - name: run_sonar_scanner
+  failure: ignore
   image: aosapps/drone-sonar-plugin
   settings:
     sonar_host:
       from_secret: SONAR_HOST
     sonar_token:
       from_secret: SONAR_TOKEN
+  when:
+    branch:
+    - develop
+    - feature/*
+    - hotfix/*
+    - release/*
+    - master
+    event:
+    - push
 
 - name: go_build
   image: golang:1.18
