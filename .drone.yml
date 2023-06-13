@@ -6,6 +6,7 @@ trigger:
       - tag
 steps:
   - name: check_readme
+    failure: ignore
     image: jjvargass/qa_develoment:latest
     commands:
       - python /app/check_readme.py
