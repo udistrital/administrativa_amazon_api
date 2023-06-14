@@ -12,7 +12,7 @@ steps:
       - python /app/check_readme.py
     when:
       branch:
-        - test
+        - release/*
         - develop
         - feature/*
     event:
@@ -23,7 +23,7 @@ steps:
       - python /app/check_branch.py -H ${DRONE_GIT_HTTP_URL}
     when:
       branch:
-        - test
+        - release/*
         - develop
         - feature/*
       event:
@@ -35,7 +35,7 @@ steps:
       - python /app/check_commits.py
     when:
       branch:
-        - test
+        - release/*
         - develop
         - feature/*
       event:
@@ -46,10 +46,7 @@ steps:
     commands:
       - go get -t
       - go get github.com/smartystreets/goconvey/convey
-      - >-
-        curl -sSfL
-        https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh
-        | sh -s -- -b $(go env GOPATH)/bin v1.41.1
+      - curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.41.1
       - go get github.com/axw/gocov/...
       - go get github.com/AlekSi/gocov-xml
       - go get -u github.com/jstemmer/go-junit-report
@@ -58,7 +55,7 @@ steps:
       branch:
         - master
         - hotfix/*
-        - test
+        - release/*
         - develop
         - feature/*
       event:
@@ -74,7 +71,7 @@ steps:
     when:
       branch:
         - hotfix/*
-        - test
+        - release/*
         - develop
         - feature/*
   - name: go_build
@@ -86,7 +83,7 @@ steps:
       branch:
         - master
         - hotfix/*
-        - test
+        - release/*
         - develop
         - feature/*
         - dependabot/**
@@ -104,10 +101,10 @@ steps:
       repo: ${DRONE_REPO##udistrital/}
       tags:
         - ${DRONE_COMMIT:0:7}
-        - latest
+        - release
     when:
       branch:
-        - test
+        - release/*
       event:
         - push
   - name: publish_to_ecr_master
@@ -139,7 +136,7 @@ steps:
         from_secret: AWS_CONTAINER
     commands:
     - case ${DRONE_BRANCH} in
-        test)
+        release/*)
           AMBIENTE=test
           CLUSTER=test
           MYCONTAINER=$${AWS_CONTAINER}/${DRONE_REPO##udistrital/}:release
@@ -162,7 +159,7 @@ steps:
     when:
       branch:
         - master
-        - test
+        - release/*
       event:
         - push
   - name: notify_telegram
@@ -193,7 +190,7 @@ steps:
     when:
       branch:
         - master
-        - test
+        - release/*
         - develop
       event:
         - push
