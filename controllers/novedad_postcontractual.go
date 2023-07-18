@@ -3,10 +3,9 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
+	"github.com/udistrital/administrativa_amazon_api/models"
 	"strconv"
 	"strings"
-
-	"github.com/udistrital/administrativa_amazon_api/models"
 
 	"github.com/astaxie/beego"
 )
@@ -35,8 +34,7 @@ func (c *NovedadPostcontractualController) URLMapping() {
 func (c *NovedadPostcontractualController) Post() {
 	var v models.NovedadPostcontractual
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if id, err := models.AddNovedadPostcontractual(&v); err == nil {
-			v.Id = int(id)
+		if _, err := models.AddNovedadPostcontractual(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {

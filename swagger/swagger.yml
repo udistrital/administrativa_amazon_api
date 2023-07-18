@@ -13616,22 +13616,6 @@ definitions:
         type: boolean
       TipoIdentificacionExtranjera:
         type: string
-  models.InformacionPersonaJuridicaTipoEntidad:
-    title: InformacionPersonaJuridicaTipoEntidad
-    type: object
-    properties:
-      Estado:
-        type: integer
-        format: int64
-      Id:
-        type: integer
-        format: int64
-      InformacionPersonaJuridicaId:
-        $ref: '#/definitions/models.InformacionPersonaJuridica'
-      NombrePerfilEntidad:
-        type: string
-      TipoEntidadId:
-        $ref: '#/definitions/models.TipoEntidad'
   models.InformacionPersonaNatural:
     title: InformacionPersonaNatural
     type: object
@@ -14893,23 +14877,6 @@ definitions:
         format: int64
       TipoContrato:
         type: string
-  models.TipoEntidad:
-    title: TipoEntidad
-    type: object
-    properties:
-      Abreviatura:
-        type: string
-      Categoria:
-        type: string
-      Descripcion:
-        type: string
-      Estado:
-        type: string
-      Id:
-        type: integer
-        format: int64
-      NombreTipo:
-        type: string
   models.TipoResolucion:
     title: TipoResolucion
     type: object
@@ -15003,12 +14970,6 @@ tags:
 - name: dedicacion
   description: |
     DedicacionController operations for Dedicacion
-- name: informacion_persona_juridica_tipo_entidad
-  description: |
-    InformacionPersonaJuridicaTipoEntidadController operations for InformacionPersonaJuridicaTipoEntidad
-- name: tipo_entidad
-  description: |
-    TipoEntidadController operations for TipoEntidad
 - name: resolucion_estado
   description: |
     ResolucionEstadoController operations for ResolucionEstado
