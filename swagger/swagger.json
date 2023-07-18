@@ -19117,6 +19117,10 @@
                     "type": "string",
                     "format": "datetime"
                 },
+                "FechaRegistro": {
+                    "type": "string",
+                    "format": "datetime"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
