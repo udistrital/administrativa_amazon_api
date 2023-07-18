@@ -18058,6 +18058,10 @@
                     "type": "string",
                     "format": "string"
                 },
+                "FechaRegistro": {
+                    "type": "string",
+                    "format": "datetime"
+                },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
