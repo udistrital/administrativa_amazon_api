@@ -6,11 +6,12 @@ import (
 	_ "github.com/udistrital/administrativa_amazon_api/routers"
 
 	"github.com/astaxie/beego"
-	"github.com/astaxie/beego/orm"
-	_ "github.com/lib/pq"
-	"github.com/astaxie/beego/plugins/cors"
 	"github.com/astaxie/beego/logs"
-	"github.com/udistrital/utils_oas/apiStatusLib"
+	"github.com/astaxie/beego/orm"
+	"github.com/astaxie/beego/plugins/cors"
+	_ "github.com/lib/pq"
+	apistatus "github.com/udistrital/utils_oas/apiStatusLib"
+	"github.com/udistrital/utils_oas/xray"
 )
 
 func init() {
@@ -19,7 +20,7 @@ func init() {
 
 func main() {
 	orm.Debug = true
-	
+
 	if beego.BConfig.RunMode == "dev" {
 		beego.BConfig.WebConfig.DirectoryIndex = true
 		beego.BConfig.WebConfig.StaticDir["/swagger"] = "swagger"
@@ -39,6 +40,7 @@ func main() {
 	}))
 
 	logs.SetLogger(logs.AdapterFile, `{"filename":"/var/log/beego/administrativa_amazon_api.log"}`)
+	xray.InitXRay()
 	apistatus.Init()
 	beego.Run()
 }
