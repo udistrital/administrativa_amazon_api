@@ -40,6 +40,22 @@ steps:
         - feature/*
       event:
         - push
+  - name: go_build
+    image: golang:1.18
+    commands:
+      - go mod init
+      - go get -t
+      - GOOS=linux GOARCH=amd64 go build -o main
+    when:
+      branch:
+        - master
+        - hotfix/*
+        - release/*
+        - develop
+        - feature/*
+        - dependabot/**
+      event:
+        - push
   - name: go_run_test
     failure: ignore
     image: golang:1.18
@@ -74,21 +90,6 @@ steps:
         - release/*
         - develop
         - feature/*
-  - name: go_build
-    image: golang:1.18
-    commands:
-      - go get -t
-      - GOOS=linux GOARCH=amd64 go build -o main
-    when:
-      branch:
-        - master
-        - hotfix/*
-        - release/*
-        - develop
-        - feature/*
-        - dependabot/**
-      event:
-        - push
   - name: publish_to_ecr_release
     image: plugins/ecr
     settings:
