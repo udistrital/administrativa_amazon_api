@@ -21,6 +21,7 @@ type Ordenadores struct {
 	Documento       int       `orm:"column(documento);null"`
 	NombreOrdenador string    `orm:"column(nombre_ordenador);null"`
 	RolOrdenador    string    `orm:"column(rol_ordenador);null"`
+	RolId           int       `orm:"column(rol_id);null"`
 }
 
 func (t *Ordenadores) TableName() string {
